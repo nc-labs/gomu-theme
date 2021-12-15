@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "steoates.autoimport",
+    "naumovs.color-highlight",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "visualstudioexptteam.vscodeintellicode",
+    "christian-kohler.path-intellisense"
+  ]
+}

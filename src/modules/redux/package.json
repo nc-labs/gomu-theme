@@ -1,0 +1,4 @@
+{
+  "name": "redux",
+  "main": "./redux.js"
+}

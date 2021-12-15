@@ -1,0 +1,4 @@
+{
+  "name": "auth-layout",
+  "main": "./AuthLayout.js"
+}
