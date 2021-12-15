@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "steoates.autoimport",
+    "naumovs.color-highlight",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "visualstudioexptteam.vscodeintellicode",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "wmaurer.change-case",
+    "lokalise.i18n-ally",
+    "coenraads.bracket-pair-colorizer-2"
+  ]
+}

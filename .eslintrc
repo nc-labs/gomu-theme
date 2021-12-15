@@ -1,0 +1,78 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": ["react", "prettier", "import"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "prettier/prettier": [
+      2,
+      {
+        "arrowParens": "always",
+        "bracketSameLine": false,
+        "bracketSpacing": true,
+        "embeddedLanguageFormatting": "auto",
+        "htmlWhitespaceSensitivity": "css",
+        "insertPragma": false,
+        "jsxSingleQuote": false,
+        "printWidth": 100,
+        "proseWrap": "always",
+        "quoteProps": "preserve",
+        "requirePragma": false,
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "useTabs": false,
+        "vueIndentScriptAndStyle": false,
+        "endOfLine": "auto"
+      }
+    ],
+    "import/imports-first": 2,
+    "import/order": [
+      2,
+      {
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ],
+    "import/newline-after-import": 2,
+    "import/no-unresolved": 0,
+    "import/named": 0,
+    "import/no-named-as-default-member": 0,
+    "react-hooks/exhaustive-deps": 0,
+    "react/jsx-indent-props": [2, 2],
+    "react/self-closing-comp": [
+      2,
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "no-duplicate-imports": 2,
+    "react/style-prop-object": 0,
+    "arrow-body-style": [2, "as-needed"],
+    "object-shorthand": [2, "always"],
+    "no-template-curly-in-string": 2
+  }
+}
