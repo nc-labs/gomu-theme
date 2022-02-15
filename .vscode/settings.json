@@ -7,5 +7,6 @@
   "files.insertFinalNewline": true,
   "i18n-ally.localesPaths": ["public/locales"],
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.sourceLanguage": "vi"
+  "i18n-ally.sourceLanguage": "vi",
+  "css.lint.unknownAtRules": "ignore"
 }

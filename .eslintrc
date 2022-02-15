@@ -3,9 +3,14 @@
     "browser": true,
     "es6": true
   },
-  "root": true,
-  "extends": ["react-app", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["react", "prettier", "import"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "parserOptions": {
     "ecmaVersion": 2018,
     "ecmaFeatures": {
@@ -55,9 +60,10 @@
     "import/newline-after-import": 2,
     "import/no-unresolved": 0,
     "import/named": 0,
+    "import/no-named-as-default-member": 0,
     "react-hooks/exhaustive-deps": 0,
-    "no-duplicate-imports": 2,
     "react/jsx-indent-props": [2, 2],
+    "no-duplicate-imports": 2,
     "react/style-prop-object": 0
   }
 }

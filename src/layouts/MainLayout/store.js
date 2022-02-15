@@ -1,5 +1,5 @@
-import { addReducer, mapActionsToDispatch } from '@modules/redux'
 import { createSlice } from '@reduxjs/toolkit'
+import { addReducer, mapActionsToDispatch } from 'modules/redux'
 
 const mainLayoutSlice = createSlice({
   name: 'sideBarVisibility',
