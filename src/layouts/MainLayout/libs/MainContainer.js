@@ -27,7 +27,7 @@ const MainContainer = ({ children }) => {
       component="main"
       sx={{
         marginLeft: {
-          md: sidebarOpen ? `${sideBarWidth}px` : 0,
+          lg: sidebarOpen ? `${sideBarWidth}px` : 0,
         },
         transition: (theme) =>
           theme.transitions.create('margin', {
@@ -58,7 +58,6 @@ const MainContainer = ({ children }) => {
           maxWidth={containerWidth}
           mx="auto"
           px={containerPadding}
-          pb={containerPadding}
         >
           <Box zIndex={1}>
             <Stack height={toolbarHeight} direction="row" alignItems="center">

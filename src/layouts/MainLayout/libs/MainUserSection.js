@@ -11,7 +11,6 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material'
-import { Icon } from 'components/atoms'
 import { usePopover } from 'hooks/usePopover'
 import Svg from 'svg'
 

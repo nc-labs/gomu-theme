@@ -6,9 +6,10 @@ import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import { Icon, Typography } from 'components/atoms'
+import { Typography } from 'components/atoms'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
+import Svg from 'svg'
 
 import MainNavItem from './MainNavItem'
 
@@ -31,11 +32,9 @@ const MainNavMenu = ({ icon, translation, items }) => {
   return (
     <>
       <ListItemButton sx={{ borderRadius: 1 }} onClick={handleClick} selected={isActive && !open}>
-        <ListItemIcon sx={{ minWidth: 32, width: 32 }}>
-          {typeof icon === 'string' ? <Icon name={icon} /> : icon}
-        </ListItemIcon>
+        <ListItemIcon sx={{ minWidth: 32, width: 32 }}>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
-        <Icon name={open ? 'angle-up' : 'angle-down'} />
+        {open ? <Svg.DoubleUp /> : <Svg.DoubleDown />}
       </ListItemButton>
 
       <Collapse in={open} sx={{ pl: 8 }}>

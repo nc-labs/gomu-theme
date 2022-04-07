@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
 
-import { AppBar, Stack, Toolbar } from '@mui/material'
-import { IconButton } from 'components/atoms'
+import { AppBar, Stack, Toolbar, IconButton } from '@mui/material'
 import { LanguageSwitcher } from 'components/organism'
+import Svg from 'svg'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 import { useMainLayoutState } from '../context'
@@ -19,7 +19,9 @@ const MainToolbar = () => {
       sx={{ bgcolor: (theme) => theme.palette.common.white }}
     >
       <Toolbar sx={{ height: MAIN_LAYOUT_CONFIGS.toolbarHeight, justifyContent: 'space-between' }}>
-        <IconButton name="sliders" onClick={() => setSidebarOpen(!sidebarOpen)} />
+        <IconButton onClick={() => setSidebarOpen(!sidebarOpen)}>
+          <Svg.Menu />
+        </IconButton>
         <Stack direction="row" spacing={3} alignItems="center">
           <LanguageSwitcher />
           <MainUserSection />

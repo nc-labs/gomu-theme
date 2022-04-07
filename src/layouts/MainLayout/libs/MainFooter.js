@@ -18,7 +18,9 @@ const MainFooter = () => (
       bgcolor: (theme) => theme.palette.common.background3,
     }}
   >
-    <Typography color="muted">Copyright © 2022. Bản quyền site thuộc về Công ty Edufit</Typography>
+    <Typography color="muted" sx={{ fontSize: { xs: 10, md: 12 } }}>
+      Copyright © 2022. Bản quyền site thuộc về Công ty Edufit
+    </Typography>
   </AppBar>
 )
 

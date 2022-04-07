@@ -10,7 +10,7 @@ import NAV_GOUPS from '../navigatorConfigs'
 import MainNavGroup from './MainNavGroup'
 
 const MainSideBar = () => {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('md'))
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('lg'))
   const { sidebarOpen, setSidebarOpen } = useMainLayoutState()
 
   useEffect(() => {
@@ -29,6 +29,9 @@ const MainSideBar = () => {
       anchor="left"
       open={sidebarOpen}
       onClose={() => setSidebarOpen(false)}
+      ModalProps={{
+        keepMounted: true,
+      }}
     >
       <Stack>
         <Link to="/" alt="home">

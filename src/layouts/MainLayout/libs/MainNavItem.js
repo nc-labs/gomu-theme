@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import { Icon, Typography, Link } from 'components/atoms'
+import { Typography, Link } from 'components/atoms'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
@@ -18,9 +18,7 @@ const MainNavItem = ({ icon, translation, url }) => {
   return (
     <Link to={url} alt={translation}>
       <ListItemButton sx={{ borderRadius: 1 }} selected={isActive}>
-        <ListItemIcon sx={{ minWidth: 32, width: 32 }}>
-          {typeof icon === 'string' ? <Icon name={icon} /> : icon}
-        </ListItemIcon>
+        <ListItemIcon sx={{ minWidth: 32, width: 32 }}>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
       </ListItemButton>
     </Link>
