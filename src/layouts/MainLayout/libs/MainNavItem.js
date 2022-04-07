@@ -18,7 +18,7 @@ const MainNavItem = ({ icon, translation, url }) => {
   return (
     <Link to={url} alt={translation}>
       <ListItemButton sx={{ borderRadius: 1 }} selected={isActive}>
-        <ListItemIcon sx={{ minWidth: 32, width: 32 }}>{icon}</ListItemIcon>
+        <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
       </ListItemButton>
     </Link>

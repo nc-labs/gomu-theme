@@ -64,6 +64,7 @@
     "react-hooks/exhaustive-deps": 0,
     "react/jsx-indent-props": [2, 2],
     "no-duplicate-imports": 2,
-    "react/style-prop-object": 0
+    "react/style-prop-object": 0,
+    "arrow-body-style": ["error", "as-needed"]
   }
 }

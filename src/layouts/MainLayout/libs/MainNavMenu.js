@@ -32,7 +32,7 @@ const MainNavMenu = ({ icon, translation, items }) => {
   return (
     <>
       <ListItemButton sx={{ borderRadius: 1 }} onClick={handleClick} selected={isActive && !open}>
-        <ListItemIcon sx={{ minWidth: 32, width: 32 }}>{icon}</ListItemIcon>
+        <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
         {open ? <Svg.DoubleUp /> : <Svg.DoubleDown />}
       </ListItemButton>
