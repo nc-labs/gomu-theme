@@ -1,25 +1,34 @@
-import 'modules/i18n'
+import 'utils/i18n'
+import 'styles/globals.css'
+import 'styles/fontawesome/css/all.min.css'
 
-import React from 'react'
+import React, { Suspense, useEffect } from 'react'
 
 import { AUTH_ROUTES } from 'layouts/AuthLayout/routes'
 import { MAIN_ROUTES } from 'layouts/MainLayout/routes'
-import { ReduxProvider } from 'modules/redux'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { DefaultThemeProvider } from 'themes'
+import { lazyFactoryPreload } from 'utils/lazy'
 
 const Routes = () => useRoutes([AUTH_ROUTES, MAIN_ROUTES])
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ReduxProvider>
+const App = () => {
+  useEffect(() => {
+    lazyFactoryPreload()
+  }, [])
+
+  return (
+    <React.StrictMode>
       <DefaultThemeProvider>
         <BrowserRouter>
-          <Routes />
+          <Suspense fallback={<></>}>
+            <Routes />
+          </Suspense>
         </BrowserRouter>
       </DefaultThemeProvider>
-    </ReduxProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+    </React.StrictMode>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))

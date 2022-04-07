@@ -1,8 +1,8 @@
-import LazyComponent from 'components/LazyComponent'
+import MainLayout from 'layouts/MainLayout'
+import lazy from 'utils/lazy'
 
-const MainLayout = LazyComponent(() => import('layouts/MainLayout'))
-const AboutPage = LazyComponent(() => import('pages/about'))
-const HomePage = LazyComponent(() => import('pages/home'))
+const AboutPage = lazy(() => import('pages/about'))
+const HomePage = lazy(() => import('pages/home'))
 
 const namespace = ''
 

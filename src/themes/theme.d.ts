@@ -6,6 +6,12 @@ declare module '@mui/material/Typography' {
   }
 }
 
+declare module '@mui/material/styles/createTheme' {
+  interface Theme {
+    mode: 'custom'
+  }
+}
+
 declare module '@mui/material/styles/createPalette' {
   interface TypeBackground {
     background1: string

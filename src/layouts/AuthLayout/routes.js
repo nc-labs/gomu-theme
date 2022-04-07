@@ -1,8 +1,8 @@
-import LazyComponent from 'components/LazyComponent'
+import AuthLayout from 'layouts/AuthLayout'
+import lazy from 'utils/lazy'
 
-const AuthLayout = LazyComponent(() => import('layouts/AuthLayout'))
-const LoginPage = LazyComponent(() => import('pages/auth/login'))
-const RegisterPage = LazyComponent(() => import('pages/auth/register'))
+const LoginPage = lazy(() => import('pages/auth/login'))
+const RegisterPage = lazy(() => import('pages/auth/register'))
 
 const namespace = '/auth'
 
