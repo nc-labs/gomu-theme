@@ -9,6 +9,8 @@ export const PATHS = {
   HOME_PAGE: '/',
   ABOUT_PAGE: '/about',
   ICONS_PAGE: '/icons',
+  LIST_BOOKS: '/books',
+  // auth paths
   LOGIN_PAGE: '/auth/login',
   REGISTER_PAGE: '/auth/register',
 }
@@ -32,6 +34,12 @@ const iconsPage = generatePageConfigs(() => import('pages/icons'), {
   icon: <Svg.Info />,
 })
 
+const listBookPage = generatePageConfigs(() => import('pages/books'), {
+  path: PATHS.LIST_BOOKS,
+  translation: 'list_book',
+  icon: <Svg.Books />,
+})
+
 // AuthLayout
 const loginPage = generatePageConfigs(() => import('pages/auth/login'), {
   path: PATHS.LOGIN_PAGE,
@@ -42,7 +50,7 @@ const registerPage = generatePageConfigs(() => import('pages/auth/register'), {
 })
 
 export const navigator = {
-  nav_group_1: [homePage, aboutPage].map((page) => page.navigator),
+  nav_group_1: [homePage, aboutPage, listBookPage].map((page) => page.navigator),
   development: [iconsPage].map((page) => page.navigator),
 }
 
@@ -51,7 +59,7 @@ export const Routes = () =>
     {
       path: '/',
       element: <MainLayout />,
-      children: [homePage, aboutPage, iconsPage].map((page) => page.route),
+      children: [homePage, aboutPage, iconsPage, listBookPage].map((page) => page.route),
     },
     {
       path: '/auth',

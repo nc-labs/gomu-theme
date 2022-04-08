@@ -1,3 +1,4 @@
 {
-  "app": "React EN"
+  "date_format": "MM/dd/yyyy",
+  "datetime_format": "HH:mm MM/dd/yyyy"
 }

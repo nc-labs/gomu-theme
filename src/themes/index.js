@@ -6,6 +6,7 @@ import breakpoints from './libs/breakpoints'
 import MuiBackdrop from './libs/MuiBackdrop'
 import MuiButton from './libs/MuiButton'
 import MuiListItemIcon from './libs/MuiListItemIcon'
+import MuiTable from './libs/MuiTable'
 import MuiTypography from './libs/MuiTypography'
 import palette from './libs/palette'
 import shadows from './libs/shadows'
@@ -21,6 +22,7 @@ export const theme = createTheme({
     MuiTypography,
     MuiBackdrop,
     MuiListItemIcon,
+    MuiTable,
   },
   spacing: 4,
   shape: {

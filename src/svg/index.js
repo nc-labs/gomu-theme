@@ -1,5 +1,6 @@
 import ArrowDown from './libs/ArrowDown'
 import ArrowUp from './libs/ArrowUp'
+import Books from './libs/Books'
 import DefaultAvatar from './libs/DefaultAvatar'
 import Dev from './libs/Dev'
 import DoubleDown from './libs/DoubleDown'
@@ -24,6 +25,7 @@ const Svg = {
   ArrowDown,
   ArrowUp,
   Dev,
+  Books,
 }
 
 export default Svg

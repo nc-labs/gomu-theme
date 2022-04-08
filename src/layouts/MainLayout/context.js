@@ -44,6 +44,8 @@ export const MainLayoutProvider = ({ children }) => {
   )
 }
 
+export const MainLayoutConsumer = MainLayoutContext.Consumer
+
 /**
  * @typedef {import('react').SetStateAction<boolean>} SetBooleanStateAction
  * @typedef {{sidebarOpen: boolean, setSidebarOpen: SetBooleanStateAction, headerTitle: React.ReactNode, cardTitle: React.ReactNode}} TMainLayoutContext
