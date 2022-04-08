@@ -34,7 +34,7 @@ const MainContainer = ({ children }) => {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
           }),
-        bgcolor: (theme) => theme.palette.common.background3,
+        bgcolor: 'background.default',
       }}
     >
       <MainToolbar />
@@ -77,7 +77,7 @@ const MainContainer = ({ children }) => {
               px={containerPadding}
               direction="row"
               alignItems="center"
-              borderBottom={(theme) => `1px solid ${theme.palette.common.outline}`}
+              borderBottom={(theme) => `1px solid ${theme.palette.divider}`}
             >
               {typeof cardTitle === 'string' ? (
                 <Typography variant="heading">{cardTitle}</Typography>

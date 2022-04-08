@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Stack, Paper } from '@mui/material'
+import { Stack, Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
 
 const AuthLayout = () => (
@@ -9,17 +9,16 @@ const AuthLayout = () => (
     p={6}
     justifyContent="center"
     alignItems="center"
-    bgcolor={(theme) => theme.palette.common.background2}
+    bgcolor="background.default"
   >
-    <Paper
+    <Box
       sx={{
         width: 1024,
         maxWidth: '100%',
-        p: { xs: 2, md: 4 },
       }}
     >
       <Outlet />
-    </Paper>
+    </Box>
   </Stack>
 )
 

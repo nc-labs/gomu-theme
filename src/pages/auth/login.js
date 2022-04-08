@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Login = () => <div>Login</div>
+import { Paper } from '@mui/material'
+
+const Login = () => <Paper sx={{ p: 4 }}>Login</Paper>
 
 export default React.memo(Login)

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { SvgIcon } from '@mui/material'
 
 const DefaultAvatar = (props) => (
@@ -72,4 +74,4 @@ const DefaultAvatar = (props) => (
   </SvgIcon>
 )
 
-export default DefaultAvatar
+export default React.memo(DefaultAvatar)

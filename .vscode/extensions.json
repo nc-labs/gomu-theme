@@ -10,6 +10,7 @@
     "formulahendry.auto-rename-tag",
     "wmaurer.change-case",
     "lokalise.i18n-ally",
-    "CoenraadS.bracket-pair-colorizer-2"
+    "coenraads.bracket-pair-colorizer-2",
+    "NathHorrigan.code-svgr"
   ]
 }

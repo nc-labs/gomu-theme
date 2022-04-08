@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 
 import { Drawer, useMediaQuery, CardMedia, Stack } from '@mui/material'
 import { Typography, Link } from 'components/atoms'
+import { navigator } from 'routes/routeConfigs'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 import { useMainLayoutState } from '../context'
-import NAV_GOUPS from '../navigatorConfigs'
 
 import MainNavGroup from './MainNavGroup'
 
@@ -59,8 +59,8 @@ const MainSideBar = () => {
         </Link>
 
         <Stack p={MAIN_LAYOUT_CONFIGS.containerPadding}>
-          {Object.keys(NAV_GOUPS).map((translation, index) => (
-            <MainNavGroup translation={translation} items={NAV_GOUPS[translation]} key={index} />
+          {Object.keys(navigator).map((translation, index) => (
+            <MainNavGroup translation={translation} items={navigator[translation]} key={index} />
           ))}
         </Stack>
       </Stack>

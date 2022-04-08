@@ -4,14 +4,11 @@ import 'styles/fontawesome/css/all.min.css'
 
 import React, { Suspense, useEffect } from 'react'
 
-import { AUTH_ROUTES } from 'layouts/AuthLayout/routes'
-import { MAIN_ROUTES } from 'layouts/MainLayout/routes'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { Routes } from 'routes/routeConfigs'
 import { DefaultThemeProvider } from 'themes'
 import { lazyFactoryPreload } from 'utils/lazy'
-
-const Routes = () => useRoutes([AUTH_ROUTES, MAIN_ROUTES])
 
 const App = () => {
   useEffect(() => {

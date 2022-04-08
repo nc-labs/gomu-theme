@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
-import { Typography } from './typographys'
+import { Typography } from './Typographys'
 
 /**
  * @type {React.FC<ILink>}
@@ -41,6 +41,6 @@ export const ButtonLink = React.memo(
 )
 
 /**
- * @typedef {import('./typographys').ITypographyProps & import('react-router-dom').LinkProps & {underline?: boolean, alt: string}} ILink
+ * @typedef {import('./Typographys').ITypographyProps & import('react-router-dom').LinkProps & {underline?: boolean, alt: string}} ILink
  * @typedef {import('@mui/material').ButtonProps & import('react-router-dom').LinkProps & {alt: string}} IButtonLink
  */

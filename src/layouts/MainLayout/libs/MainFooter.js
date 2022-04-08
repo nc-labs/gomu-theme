@@ -15,7 +15,7 @@ const MainFooter = () => (
       px: 4,
       alignItems: 'flex-end',
       justifyContent: 'center',
-      bgcolor: (theme) => theme.palette.common.background3,
+      bgcolor: 'background.default',
     }}
   >
     <Typography color="muted" sx={{ fontSize: { xs: 10, md: 12 } }}>

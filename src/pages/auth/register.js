@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Register = () => <div>Register</div>
+import { Paper } from '@mui/material'
+
+const Register = () => <Paper sx={{ p: 4 }}>Register</Paper>
 
 export default React.memo(Register)

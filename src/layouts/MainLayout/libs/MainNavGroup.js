@@ -9,9 +9,6 @@ import { useTranslation } from 'react-i18next'
 import MainNavItem from './MainNavItem'
 import MainNavMenu from './MainNavMenu'
 
-/**
- * @type {React.FC<INavGroupProps>}
- */
 const MainNavGroup = ({ translation, items }) => {
   const { t } = useTranslation('navigator')
 
@@ -34,7 +31,3 @@ const MainNavGroup = ({ translation, items }) => {
 }
 
 export default React.memo(MainNavGroup)
-
-/**
- * @typedef {{translation: string, items: (import('./MainNavItem').INavItem | import('./MainNavMenu').INavMenu)[]}} INavGroupProps
- */

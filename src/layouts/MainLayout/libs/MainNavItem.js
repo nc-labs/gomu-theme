@@ -7,9 +7,6 @@ import { Typography, Link } from 'components/atoms'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
-/**
- * @type {React.FC<INavItem>}
- */
 const MainNavItem = ({ icon, translation, url }) => {
   const { t } = useTranslation('navigator')
   const { pathname } = useLocation() || {}
@@ -26,7 +23,3 @@ const MainNavItem = ({ icon, translation, url }) => {
 }
 
 export default React.memo(MainNavItem)
-
-/**
- * @typedef {{icon: React.ReactNode, translation: string, url: string}} INavItem
- */

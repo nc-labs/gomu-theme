@@ -13,9 +13,6 @@ import Svg from 'svg'
 
 import MainNavItem from './MainNavItem'
 
-/**
- * @type {React.FC<INavMenu>}
- */
 const MainNavMenu = ({ icon, translation, items }) => {
   const { pathname } = useLocation()
   const isActive = useMemo(
@@ -34,7 +31,7 @@ const MainNavMenu = ({ icon, translation, items }) => {
       <ListItemButton sx={{ borderRadius: 1 }} onClick={handleClick} selected={isActive && !open}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
-        {open ? <Svg.DoubleUp /> : <Svg.DoubleDown />}
+        {open ? <Svg.ArrowUp /> : <Svg.ArrowDown />}
       </ListItemButton>
 
       <Collapse in={open} sx={{ pl: 8 }}>
@@ -49,7 +46,3 @@ const MainNavMenu = ({ icon, translation, items }) => {
 }
 
 export default React.memo(MainNavMenu)
-
-/**
- * @typedef {{icon: React.ReactNode, translation: string, items: import('./MainNavItem').INavItem[]}} INavMenu
- */

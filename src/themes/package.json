@@ -1,5 +1,0 @@
-{
-  "name": "default-theme",
-  "main": "./theme.js",
-  "types": "./theme.d.ts"
-}

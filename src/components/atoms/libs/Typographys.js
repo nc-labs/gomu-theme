@@ -12,9 +12,9 @@ const VARIANT_MAPPING = {
 }
 
 const COLOR_MAPPING = {
-  default: 'common.text1',
-  muted: 'common.text2',
-  disabled: 'common.text3',
+  default: 'text.primary',
+  muted: 'text.secondary',
+  disabled: 'text.disabled',
   primary: 'primary',
   secondary: 'secondary',
   inherit: 'inherit',
