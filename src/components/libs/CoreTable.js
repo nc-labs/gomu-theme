@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 
 import {
   Table,
@@ -10,10 +10,11 @@ import {
   Paper,
   Pagination,
   Stack,
+  Checkbox,
 } from '@mui/material'
 import { Typography } from 'components'
 import MAIN_LAYOUT_CONFIGS from 'layouts/MainLayout/configs'
-import { get } from 'lodash'
+import { get, uniq } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { formatDate, formatDatetime } from 'utils/date'
 
@@ -29,6 +30,33 @@ const CoreTable = ({
   limit = 10,
 }) => {
   const { t } = useTranslation(translation)
+  const [selected, setSelected] = useState([])
+
+  const getHeaderCheckboxProps = useCallback(
+    () => ({
+      onChange: () => {
+        const newValues = selected.length === data.length ? [] : data.map((el) => el?.id)
+        setSelected(newValues)
+      },
+      checked: selected.length === data.length,
+      indeterminate: selected.length !== 0 && selected.length !== data.length,
+    }),
+    [selected]
+  )
+
+  const getRowCheckboxProps = useCallback(
+    (id) => ({
+      onChange: () => {
+        const newValues = selected.includes(id)
+          ? selected.filter((el) => el !== id)
+          : uniq([...selected, id])
+
+        setSelected(newValues)
+      },
+      checked: selected.includes(id),
+    }),
+    [selected]
+  )
 
   return (
     <Paper sx={{ overflow: 'hidden' }}>
@@ -42,8 +70,8 @@ const CoreTable = ({
           <TableHead sx={{ height: toolbarHeight }}>
             <TableRow>
               {selectable && (
-                <TableCell>
-                  <Typography>select</Typography>
+                <TableCell sx={{ textAlign: 'center' }}>
+                  <Checkbox {...getHeaderCheckboxProps()} />
                 </TableCell>
               )}
 
@@ -60,11 +88,11 @@ const CoreTable = ({
           </TableHead>
 
           <TableBody>
-            {data.map((record, bookIndex) => (
-              <TableRow key={bookIndex}>
+            {data.map((record, index) => (
+              <TableRow key={index}>
                 {selectable && (
-                  <TableCell>
-                    <Typography>select</Typography>
+                  <TableCell sx={{ textAlign: 'center' }}>
+                    <Checkbox {...getRowCheckboxProps(record?.id)} />
                   </TableCell>
                 )}
 
