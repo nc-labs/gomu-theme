@@ -1,18 +1,15 @@
 import React from 'react'
 
 import { Typography } from '@mui/material'
-import { useMainLayoutConfigs } from 'layouts/MainLayout/context'
-import { useTranslation } from 'react-i18next'
+import MainContainer from 'layouts/MainLayout/libs/MainContainer'
 
-const About = () => {
-  const { t } = useTranslation()
-
-  useMainLayoutConfigs({
-    headerTitle: 'About Page',
-    cardTitle: 'About Card',
-  })
-
-  return <Typography>About {t('app')}</Typography>
-}
+const About = () => (
+  <>
+    <MainContainer.Header>About Page</MainContainer.Header>
+    <MainContainer.CardContent>
+      <Typography>About</Typography>
+    </MainContainer.CardContent>
+  </>
+)
 
 export default React.memo(About)

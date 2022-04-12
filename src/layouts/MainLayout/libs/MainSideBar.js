@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 
 import { Drawer, useMediaQuery, CardMedia, Stack } from '@mui/material'
-import { Typography, Link } from 'components/atoms'
+import { Typography, Link } from 'components'
+import { useLocation } from 'react-router-dom'
 import { navigator } from 'routes/routeConfigs'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
@@ -12,10 +13,17 @@ import MainNavGroup from './MainNavGroup'
 const MainSideBar = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('lg'))
   const { sidebarOpen, setSidebarOpen } = useMainLayoutState()
+  const { pathname } = useLocation()
 
   useEffect(() => {
     setSidebarOpen(!isMobile)
   }, [isMobile])
+
+  useEffect(() => {
+    if (!isMobile) return
+
+    setSidebarOpen(false)
+  }, [pathname])
 
   return (
     <Drawer
@@ -33,8 +41,8 @@ const MainSideBar = () => {
         keepMounted: true,
       }}
     >
-      <Stack>
-        <Link to="/" alt="home">
+      <Stack position="relative">
+        <Link to="/" alt="home" sx={{ position: 'sticky', top: 0, zIndex: 10 }}>
           <Stack
             direction="row"
             spacing={3}

@@ -7,8 +7,11 @@ const MuiTable = createTheme({
     MuiTable: {
       styleOverrides: {
         root: {
-          '& thead tr th, tbody tr:not(:last-of-type) td': {
+          '& thead tr th, tbody tr td': {
             borderBottom: `1px solid ${palette.divider}`,
+          },
+          '& tfoot tr td': {
+            borderBottom: `1px solid transparent`,
           },
         },
       },

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useLayoutEffect } from 'react'
+import React, { useState, useContext } from 'react'
 
 const INIT_STATE = {
   sidebarOpen: true,
@@ -11,34 +11,11 @@ export const MainLayoutContext = React.createContext({})
  */
 export const useMainLayoutState = () => useContext(MainLayoutContext)
 
-export const useMainLayoutConfigs = ({ headerTitle, cardTitle }) => {
-  const {
-    setHeaderTitle,
-    setCardTitle,
-    headerTitle: currentHeaderTitle,
-    cardTitle: currentCardTitle,
-  } = useContext(MainLayoutContext)
-
-  useLayoutEffect(() => {
-    setHeaderTitle(headerTitle || '')
-    setCardTitle(cardTitle || '')
-
-    return () => {
-      currentHeaderTitle === headerTitle && setHeaderTitle('')
-      currentCardTitle === cardTitle && setCardTitle('')
-    }
-  }, [headerTitle, cardTitle])
-}
-
 export const MainLayoutProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(INIT_STATE.sidebarOpen)
-  const [headerTitle, setHeaderTitle] = useState('')
-  const [cardTitle, setCardTitle] = useState('')
 
   return (
-    <MainLayoutContext.Provider
-      value={{ sidebarOpen, setSidebarOpen, headerTitle, cardTitle, setHeaderTitle, setCardTitle }}
-    >
+    <MainLayoutContext.Provider value={{ sidebarOpen, setSidebarOpen }}>
       {children}
     </MainLayoutContext.Provider>
   )
@@ -48,5 +25,5 @@ export const MainLayoutConsumer = MainLayoutContext.Consumer
 
 /**
  * @typedef {import('react').SetStateAction<boolean>} SetBooleanStateAction
- * @typedef {{sidebarOpen: boolean, setSidebarOpen: SetBooleanStateAction, headerTitle: React.ReactNode, cardTitle: React.ReactNode}} TMainLayoutContext
+ * @typedef {{sidebarOpen: boolean, setSidebarOpen: SetBooleanStateAction}} TMainLayoutContext
  */

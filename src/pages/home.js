@@ -1,18 +1,15 @@
 import React from 'react'
 
 import { Typography } from '@mui/material'
-import { useMainLayoutConfigs } from 'layouts/MainLayout/context'
-import { useTranslation } from 'react-i18next'
+import MainContainer from 'layouts/MainLayout/libs/MainContainer'
 
-const Home = () => {
-  const { t } = useTranslation()
-
-  useMainLayoutConfigs({
-    headerTitle: 'Home Page',
-    cardTitle: 'Home Card',
-  })
-
-  return <Typography>Home {t('app')}</Typography>
-}
+const Home = () => (
+  <>
+    <MainContainer.Header>Home Page</MainContainer.Header>
+    <MainContainer.CardContent>
+      <Typography>Home</Typography>
+    </MainContainer.CardContent>
+  </>
+)
 
 export default React.memo(Home)

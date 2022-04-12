@@ -1,71 +1,114 @@
-import React from 'react'
+import React, { useState, useContext, useLayoutEffect } from 'react'
 
 import { Box, Paper, Stack } from '@mui/material'
-import { Typography } from 'components/atoms'
+import { Typography } from 'components'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
-import { useMainLayoutState } from '../context'
 
 const { toolbarHeight, headerHeight, footerHeight, containerPadding, containerWidth } =
   MAIN_LAYOUT_CONFIGS
 const containerMinHeight = `calc(100vh - ${headerHeight + footerHeight}px)`
 
-const MainContainer = ({ children }) => {
-  const { headerTitle, cardTitle } = useMainLayoutState()
+const MainContainerContext = React.createContext({})
+
+const MainContainer = React.memo(({ children }) => {
+  const [headerTitle, setHeaderTitle] = useState('')
+  const [cardTitle, setCardTitle] = useState('')
+  const [cardContent, setCardContent] = useState('')
 
   return (
-    <Box
-      position="relative"
-      sx={{
-        '&:after': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          left: 0,
-          height: toolbarHeight * 2,
-          background: (theme) => theme.palette.primary.main,
-        },
-      }}
-    >
-      <Stack
-        minHeight={containerMinHeight}
-        maxWidth={containerWidth}
-        mx="auto"
-        px={containerPadding}
-      >
-        <Box zIndex={1}>
-          <Stack height={toolbarHeight} direction="row" alignItems="center">
-            {typeof headerTitle === 'string' ? (
-              <Typography variant="heading" sx={{ color: (theme) => theme.palette.common.white }}>
-                {headerTitle}
-              </Typography>
-            ) : (
-              headerTitle
-            )}
-          </Stack>
-        </Box>
+    <Stack position="relative" minHeight={containerMinHeight} px={containerPadding}>
+      <Box
+        position="absolute"
+        top={0}
+        right={0}
+        left={0}
+        height={toolbarHeight * 2}
+        bgcolor="primary.main"
+      ></Box>
 
-        <Paper sx={{ flex: 'auto', zIndex: 1 }}>
-          <Stack
-            height={toolbarHeight}
-            px={containerPadding}
-            direction="row"
-            alignItems="center"
-            borderBottom={(theme) => `1px solid ${theme.palette.divider}`}
-          >
-            {typeof cardTitle === 'string' ? (
-              <Typography variant="heading">{cardTitle}</Typography>
-            ) : (
-              cardTitle
-            )}
-          </Stack>
+      <Box maxWidth={containerWidth} width="100%" mx="auto" zIndex={1}>
+        <MainContainerContext.Provider value={{ setHeaderTitle, setCardTitle, setCardContent }}>
+          <Stack minHeight={containerMinHeight}>
+            <Stack
+              height={toolbarHeight}
+              direction="row"
+              alignItems="center"
+              bgcolor="primary.main"
+            >
+              {typeof headerTitle === 'string' ? (
+                <Typography variant="heading" sx={{ color: (theme) => theme.palette.common.white }}>
+                  {headerTitle}
+                </Typography>
+              ) : (
+                headerTitle
+              )}
+            </Stack>
 
-          <Box p={containerPadding}>{children}</Box>
-        </Paper>
-      </Stack>
-    </Box>
+            <Paper sx={{ flex: 'auto' }}>
+              {cardTitle}
+              {cardContent}
+              {children}
+            </Paper>
+          </Stack>
+        </MainContainerContext.Provider>
+      </Box>
+    </Stack>
   )
-}
+})
 
-export default React.memo(MainContainer)
+MainContainer.Header = React.memo(({ children }) => {
+  const { setHeaderTitle } = useContext(MainContainerContext)
+
+  useLayoutEffect(() => {
+    setHeaderTitle(children)
+
+    return () => setHeaderTitle('')
+  }, [children])
+
+  return <></>
+})
+
+MainContainer.CardTitle = React.memo(({ children }) => {
+  const { setCardTitle } = useContext(MainContainerContext)
+
+  useLayoutEffect(() => {
+    setCardTitle(
+      <Stack
+        height={toolbarHeight}
+        px={containerPadding}
+        direction="row"
+        alignItems="center"
+        borderBottom={(theme) => `1px solid ${theme.palette.divider}`}
+      >
+        {typeof children === 'string' ? (
+          <Typography variant="heading">{children}</Typography>
+        ) : (
+          children
+        )}
+      </Stack>
+    )
+
+    return () => setCardTitle('')
+  }, [children])
+
+  return <></>
+})
+
+MainContainer.CardContent = React.memo(({ children, ...props }) => {
+  const { setCardContent } = useContext(MainContainerContext)
+
+  useLayoutEffect(() => {
+    setCardContent(
+      <Box p={containerPadding} {...props}>
+        {children}
+      </Box>
+    )
+
+    return () => setCardContent('')
+  }, [children])
+
+  return <></>
+})
+
+export default MainContainer

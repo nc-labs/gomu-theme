@@ -1,4 +1,4 @@
-import AuthLayout from 'layouts/AuthLayout/AuthLayout'
+import AuthLayout from 'layouts/AuthLayout'
 import MainLayout from 'layouts/MainLayout'
 import { useRoutes } from 'react-router-dom'
 import Svg from 'svg'
@@ -30,7 +30,7 @@ const aboutPage = generatePageConfigs(() => import('pages/about'), {
 
 const iconsPage = generatePageConfigs(() => import('pages/icons'), {
   path: PATHS.ICONS_PAGE,
-  translation: 'about',
+  translation: 'icons',
   icon: <Svg.Info />,
 })
 

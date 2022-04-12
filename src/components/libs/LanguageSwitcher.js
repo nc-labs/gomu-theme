@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { List, ListItemButton } from '@mui/material'
 import Button from '@mui/material/Button'
@@ -22,11 +22,11 @@ export const LanguageSwitcher = React.memo(() => {
   const currentLanguage = languages.find((lng) => lng.id === currentLanguageId)
   const { popoverProps, openPopover, closePopover } = usePopover()
 
-  const handleLanguageChange = (lng) => {
+  const handleLanguageChange = useCallback((lng) => {
     i18n.changeLanguage(lng.id)
 
     closePopover()
-  }
+  }, [])
 
   return (
     <>

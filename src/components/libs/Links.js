@@ -10,22 +10,21 @@ import { Typography } from './Typographys'
  */
 export const Link = React.memo(
   ({ reloadDocument, replace, state, to, children, sx, underline = false, alt, ...props }) => (
-    <RouterLink {...{ reloadDocument, replace, state, to }}>
-      <Typography
-        {...props}
-        sx={[
-          {
-            cursor: 'pointer',
-            textDecoration: underline ? 'underline' : undefined,
-            ...(typeof sx === 'object' && !Array.isArray(sx) ? sx : {}),
-          },
-          ...(Array.isArray(sx) ? sx : []),
-        ]}
-        component="span"
-      >
-        {children}
-      </Typography>
-    </RouterLink>
+    <Typography
+      {...props}
+      sx={[
+        {
+          cursor: 'pointer',
+          textDecoration: underline ? 'underline' : undefined,
+          ...(typeof sx === 'object' && !Array.isArray(sx) ? sx : {}),
+        },
+        ...(Array.isArray(sx) ? sx : []),
+      ]}
+      component={RouterLink}
+      {...{ reloadDocument, replace, state, to }}
+    >
+      {children}
+    </Typography>
   )
 )
 
