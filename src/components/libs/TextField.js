@@ -4,7 +4,6 @@ import { TextField as MuiTextField } from '@mui/material'
 import { useController, useFormContext } from 'react-hook-form'
 
 /**
- * @typedef {Omit<import('@mui/material').TextFieldProps, | 'error' | 'helperText'>} TextFieldProps
  * @type {React.ElementType<TextFieldProps>}
  */
 const TextField = ({ name, label, placeholder, onChange, ...props }) => {
@@ -39,3 +38,7 @@ const TextField = ({ name, label, placeholder, onChange, ...props }) => {
 }
 
 export default React.memo(TextField)
+
+/**
+ * @typedef {Omit<import('@mui/material').TextFieldProps, | 'error' | 'helperText'>} TextFieldProps
+ */

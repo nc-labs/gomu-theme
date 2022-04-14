@@ -13,7 +13,6 @@ import {
 } from '@mui/material'
 import { Icon } from 'components'
 import { usePopover } from 'hooks/usePopover'
-import Svg from 'svg'
 
 const mockUser = {
   avt: '',
@@ -31,14 +30,14 @@ const MainUserSection = () => {
         }}
         onClick={openPopover}
       >
-        <Svg.DefaultAvatar sx={{ height: 40, width: 40 }} />
+        <Icon name="default-user" sx={{ height: 40, width: 40 }} />
       </Box>
 
       <Popover {...popoverProps}>
         <List sx={{ minWidth: 360 }}>
           <ListItemButton onClick={closePopover}>
             <ListItemIcon>
-              <Svg.DefaultAvatar sx={{ height: 64, width: 64 }} />
+              <Icon name="default-user" sx={{ height: 64, width: 64 }} />
             </ListItemIcon>
 
             <ListItemText>

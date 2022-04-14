@@ -27,11 +27,8 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 })
 
 /**
- * @typedef {Omit<import('react-hook-form').UseControllerProps, 'render'>} ControllerProps
- * @typedef {Omit<import('@mui/material').TextFieldProps, 'name' | 'error' | 'helperText'>} NumberFieldProps
  * @type {React.ElementType<ControllerProps & NumberFieldProps>}
  */
-
 const NumberField = ({
   name,
   rules,
@@ -76,3 +73,8 @@ const NumberField = ({
 )
 
 export default React.memo(NumberField)
+
+/**
+ * @typedef {Omit<import('react-hook-form').UseControllerProps, 'render'>} ControllerProps
+ * @typedef {Omit<import('@mui/material').TextFieldProps, 'name' | 'error' | 'helperText'>} NumberFieldProps
+ */

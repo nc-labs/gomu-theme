@@ -1,9 +1,8 @@
 import React from 'react'
 
 import { Button } from '@mui/material'
+import { Typography } from 'components'
 import { Link as RouterLink } from 'react-router-dom'
-
-import { Typography } from './Typographys'
 
 /**
  * @type {React.FC<ILink>}

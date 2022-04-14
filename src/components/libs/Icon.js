@@ -13,9 +13,9 @@ const SvgIcon = ({ name, ...props }) => {
 
   return (
     <MuiSvgIcon viewBox={icon.viewBox} {...props}>
-      {icon.paths.map((path, index) => (
-        <path key={index} {...path} />
-      ))}
+      {icon.children?.map(({ tagName, attrs }, index) =>
+        React.createElement(tagName, { ...attrs, key: index })
+      )}
     </MuiSvgIcon>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useLayoutEffect, useState } from 'react'
 
 import { Button, Stack, SvgIcon } from '@mui/material'
 import { styled } from '@mui/material/styles'
@@ -10,12 +10,12 @@ const Input = styled('input')({
   display: 'none',
 })
 
-const ShowIcon = React.memo(({ name, viewBox, paths }) => (
+const ShowIcon = React.memo(({ name, viewBox, children }) => (
   <Stack width={160} mb={8} alignItems="center">
     <SvgIcon viewBox={viewBox} fontSize="large">
-      {paths.map((path, index) => (
-        <path key={index} {...path} />
-      ))}
+      {children?.map(({ tagName, attrs }, index) =>
+        React.createElement(tagName, { ...attrs, key: index })
+      )}
     </SvgIcon>
 
     <Typography textAlign="center">{name}</Typography>
@@ -24,6 +24,7 @@ const ShowIcon = React.memo(({ name, viewBox, paths }) => (
 
 const SvgIconTool = () => {
   const [icons, setIcons] = useState(svgConfigs || {})
+  const [href, setHref] = useState('')
 
   const onFileChange = useCallback(
     async (e) => {
@@ -33,34 +34,48 @@ const SvgIconTool = () => {
       }
 
       setIcons(newIcons)
+
+      const blob = new Blob([`export const svgConfigs = ${JSON.stringify(newIcons)}`], {
+        type: 'text/plain',
+      })
+
+      setHref(window.URL.createObjectURL(blob))
     },
     [JSON.stringify(icons)]
   )
 
+  useLayoutEffect(() => {
+    const blob = new Blob(
+      ['// eslint-disable-file', `export const svgConfigs = ${JSON.stringify(icons)}`],
+      {
+        type: 'text/plain',
+      }
+    )
+
+    setHref(window.URL.createObjectURL(blob))
+  }, [JSON.stringify(icons)])
+
   return (
     <>
       <Stack direction="row" width="100%" flexWrap="wrap">
-        {Object.keys(icons).map((iconName, index) => (
-          <ShowIcon name={iconName} {...icons[iconName]} key={index} />
-        ))}
+        {Object.keys(icons)
+          .sort()
+          .map((iconName, index) => (
+            <ShowIcon name={iconName} {...icons[iconName]} key={index} />
+          ))}
       </Stack>
 
       <Stack direction="row" spacing={3} justifyContent="center">
         <label htmlFor="svg-upload">
           <Input accept=".svg" id="svg-upload" multiple type="file" onChange={onFileChange} />
           <Button variant="contained" component="span">
-            Upload
+            Upload svg icons
           </Button>
         </label>
 
-        <Button
-          onClick={() => {
-            const content = `export const svgIcons = ${JSON.stringify(icons) || '{}'}`
-            navigator.clipboard.writeText(content)
-          }}
-        >
-          Copy configs
-        </Button>
+        <a href={href} download="svgConfigs.js">
+          <Button>Download configs file</Button>
+        </a>
       </Stack>
     </>
   )

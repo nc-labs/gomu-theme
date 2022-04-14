@@ -8,14 +8,15 @@ import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
 import { usePopover } from 'hooks/usePopover'
 import { useTranslation } from 'react-i18next'
-import Svg from 'svg'
+
+import Icon from './Icon'
 
 const languages = [
-  { id: 'vi', title: 'Tiếng việt', flag: <Svg.VietNamFlag /> },
-  { id: 'en', title: 'English', flag: <Svg.USFlag /> },
+  { id: 'vi', title: 'Tiếng việt', flag: <Icon name="vn-flag" /> },
+  { id: 'en', title: 'English', flag: <Icon name="us-flag" /> },
 ]
 
-export const LanguageSwitcher = React.memo(() => {
+const LanguageSwitcher = () => {
   const { i18n } = useTranslation()
 
   const currentLanguageId = i18n.language
@@ -47,4 +48,6 @@ export const LanguageSwitcher = React.memo(() => {
       </Popover>
     </>
   )
-})
+}
+
+export default React.memo(LanguageSwitcher)

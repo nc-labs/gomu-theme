@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 
-import { CoreTable } from 'components'
 import MainContainer from 'layouts/MainLayout/libs/MainContainer'
+import CoreTable from 'templates/CoreTable'
 
 import books from './book_data.json'
 

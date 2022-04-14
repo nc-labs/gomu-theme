@@ -23,26 +23,25 @@ const COLOR_MAPPING = {
 /**
  * @type {React.FC<ITypographyProps>}
  */
-export const Typography = React.memo(
-  React.forwardRef(
-    ({ variant = 'body', color = 'inherit', children, component = 'p', ...props }, ref) => (
-      <MuiTypography
-        ref={ref}
-        variant={VARIANT_MAPPING[variant]}
-        color={COLOR_MAPPING[color]}
-        component={component}
-        {...props}
-      >
-        {children}
-      </MuiTypography>
-    )
+const Typography = React.forwardRef(
+  ({ variant = 'body', color = 'inherit', children, component = 'p', ...props }, ref) => (
+    <MuiTypography
+      ref={ref}
+      variant={VARIANT_MAPPING[variant]}
+      color={COLOR_MAPPING[color]}
+      component={component}
+      {...props}
+    >
+      {children}
+    </MuiTypography>
   )
 )
 
+export default React.memo(Typography)
+
 /**
- * @typedef {Omit<import('@mui/material').TypographyProps, 'variantMapping' | 'variant' | 'color'> & {
- * variant?: 'tiny' | 'caption' | 'body' | 'subtitle' | 'title' | 'heading'
- * color?: 'default' | 'muted' | 'disabled' | 'primary' | 'secondary' | 'inherit'
- * component?: React.ElementType
- * }} ITypographyProps
+ * @typedef {Omit<import('@mui/material').TypographyProps, 'variantMapping' | 'variant' | 'color'>} MuiTypographyProps
+ * @typedef {'tiny' | 'caption' | 'body' | 'subtitle' | 'title' | 'heading'} TVariant
+ * @typedef {'default' | 'muted' | 'disabled' | 'primary' | 'secondary' | 'inherit'} TColor
+ * @typedef {MuiTypographyProps & {variant?: TVariant, color?: TColor, component?: React.ElementType}} ITypographyProps
  */

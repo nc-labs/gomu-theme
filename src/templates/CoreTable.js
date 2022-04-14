@@ -17,7 +17,7 @@ import { get, uniq } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { formatDate, formatDatetime } from 'utils/datetime'
 
-import Pagination from './Pagination'
+import Pagination from '../components/libs/Pagination'
 
 const { toolbarHeight, headerHeight, footerHeight } = MAIN_LAYOUT_CONFIGS
 
