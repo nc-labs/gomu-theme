@@ -11,6 +11,7 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material'
+import { Icon } from 'components'
 import { usePopover } from 'hooks/usePopover'
 import Svg from 'svg'
 
@@ -52,7 +53,7 @@ const MainUserSection = () => {
 
           <ListItemButton onClick={closePopover}>
             <ListItemIcon>
-              <Svg.Logout />
+              <Icon name="logout" />
             </ListItemIcon>
 
             <ListItemText>

@@ -63,6 +63,13 @@
     "import/no-named-as-default-member": 0,
     "react-hooks/exhaustive-deps": 0,
     "react/jsx-indent-props": [2, 2],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
     "no-duplicate-imports": 2,
     "react/style-prop-object": 0,
     "arrow-body-style": ["error", "as-needed"]

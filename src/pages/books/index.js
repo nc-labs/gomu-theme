@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { CoreTable } from 'components'
 import MainContainer from 'layouts/MainLayout/libs/MainContainer'
@@ -6,12 +6,12 @@ import MainContainer from 'layouts/MainLayout/libs/MainContainer'
 import books from './book_data.json'
 
 const ListBook = () => {
-  const columns = ['title', 'author', 'date::date', 'pages']
+  const columns = useMemo(() => ['title', 'author', 'date::date', 'pages'], [])
 
   return (
     <>
       <MainContainer.Header>Books</MainContainer.Header>
-      <CoreTable translation="pages/books" data={books} columns={columns} />
+      <CoreTable name="books" translation="pages/books" data={books} columns={columns} />
     </>
   )
 }

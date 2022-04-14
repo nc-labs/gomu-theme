@@ -6,10 +6,10 @@ import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import clsx from 'clsx'
 import { Typography } from 'components'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
-import Svg from 'svg'
 
 import MainNavItem from './MainNavItem'
 
@@ -31,7 +31,7 @@ const MainNavMenu = ({ icon, translation, items }) => {
       <ListItemButton sx={{ borderRadius: 1 }} onClick={handleClick} selected={isActive && !open}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
-        {open ? <Svg.ArrowUp /> : <Svg.ArrowDown />}
+        <i className={clsx('icon-medium', open ? 'icon-up' : 'icon-down')} />
       </ListItemButton>
 
       <Collapse in={open} sx={{ pl: 8 }}>

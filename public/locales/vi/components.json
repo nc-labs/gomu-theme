@@ -1,0 +1,6 @@
+{
+  "pagination": {
+    "items_per_page": "Số bản ghi trên trang",
+    "page_infos": "{{from}}–{{to}} trong số {{totalItem}}"
+  }
+}

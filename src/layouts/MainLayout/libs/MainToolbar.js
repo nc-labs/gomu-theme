@@ -1,8 +1,7 @@
 import React, { memo } from 'react'
 
 import { AppBar, Stack, Toolbar, IconButton } from '@mui/material'
-import { LanguageSwitcher } from 'components'
-import Svg from 'svg'
+import { LanguageSwitcher, Icon } from 'components'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 import { useMainLayoutState } from '../context'
@@ -20,8 +19,9 @@ const MainToolbar = () => {
     >
       <Toolbar sx={{ height: MAIN_LAYOUT_CONFIGS.toolbarHeight, justifyContent: 'space-between' }}>
         <IconButton onClick={() => setSidebarOpen(!sidebarOpen)}>
-          <Svg.Menu />
+          <Icon name="menu" />
         </IconButton>
+
         <Stack direction="row" spacing={3} alignItems="center">
           <LanguageSwitcher />
           <MainUserSection />

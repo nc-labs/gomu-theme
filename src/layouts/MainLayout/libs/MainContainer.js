@@ -25,7 +25,7 @@ const MainContainer = React.memo(({ children }) => {
         left={0}
         height={toolbarHeight * 2}
         bgcolor="primary.main"
-      ></Box>
+      />
 
       <Box maxWidth={containerWidth} width="100%" mx="auto" zIndex={1}>
         <MainContainerContext.Provider value={{ setHeaderTitle, setCardTitle, setCardContent }}>

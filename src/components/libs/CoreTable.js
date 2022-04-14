@@ -8,27 +8,20 @@ import {
   TableBody,
   CardMedia,
   Paper,
-  Pagination,
-  Stack,
   Checkbox,
+  Stack,
 } from '@mui/material'
-import { Typography } from 'components'
+import { Typography, IconButton } from 'components'
 import MAIN_LAYOUT_CONFIGS from 'layouts/MainLayout/configs'
 import { get, uniq } from 'lodash'
 import { useTranslation } from 'react-i18next'
-import { formatDate, formatDatetime } from 'utils/date'
+import { formatDate, formatDatetime } from 'utils/datetime'
+
+import Pagination from './Pagination'
 
 const { toolbarHeight, headerHeight, footerHeight } = MAIN_LAYOUT_CONFIGS
 
-const CoreTable = ({
-  data,
-  columns,
-  translation,
-  selectable = true,
-  page = 1,
-  totalItem = 100,
-  limit = 10,
-}) => {
+const CoreTable = ({ name, data, columns, translation, selectable = true }) => {
   const { t } = useTranslation(translation)
   const [selected, setSelected] = useState([])
 
@@ -70,7 +63,7 @@ const CoreTable = ({
           <TableHead sx={{ height: toolbarHeight }}>
             <TableRow>
               {selectable && (
-                <TableCell sx={{ textAlign: 'center' }}>
+                <TableCell sx={{ py: 0, textAlign: 'center' }}>
                   <Checkbox {...getHeaderCheckboxProps()} />
                 </TableCell>
               )}
@@ -81,9 +74,7 @@ const CoreTable = ({
                 </TableCell>
               ))}
 
-              <TableCell>
-                <Typography>action</Typography>
-              </TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
 
@@ -91,7 +82,7 @@ const CoreTable = ({
             {data.map((record, index) => (
               <TableRow key={index}>
                 {selectable && (
-                  <TableCell sx={{ textAlign: 'center' }}>
+                  <TableCell sx={{ py: 0, textAlign: 'center' }}>
                     <Checkbox {...getRowCheckboxProps(record?.id)} />
                   </TableCell>
                 )}
@@ -132,7 +123,11 @@ const CoreTable = ({
                 })}
 
                 <TableCell>
-                  <Typography>action</Typography>
+                  <Stack direction="row" spacing={1} alignItems="center">
+                    <IconButton size="small" color="info" name="view" />
+                    <IconButton size="small" color="success" name="edit" />
+                    <IconButton size="small" color="error" name="delete" />
+                  </Stack>
                 </TableCell>
               </TableRow>
             ))}
@@ -140,27 +135,7 @@ const CoreTable = ({
         </Table>
       </Paper>
 
-      <Stack
-        direction="row"
-        p={3}
-        alignItems="center"
-        justifyContent={{ xs: 'center', md: 'flex-end' }}
-        spacing={3}
-      >
-        <Typography component="span">Số bản ghi trên trang: {limit}</Typography>
-
-        <Typography component="span">
-          {(page - 1) * limit + 1}–{page * limit} trong số {totalItem}
-        </Typography>
-
-        <Pagination
-          shape="rounded"
-          color="primary"
-          page={page}
-          count={totalItem / limit}
-          onChange={(_e, nextPage) => console.log(nextPage)}
-        />
-      </Stack>
+      <Pagination tableName={name} totalItem={22} />
     </Paper>
   )
 }

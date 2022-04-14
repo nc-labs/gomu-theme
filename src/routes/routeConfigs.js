@@ -1,14 +1,15 @@
+import { Icon } from 'components'
 import AuthLayout from 'layouts/AuthLayout'
 import MainLayout from 'layouts/MainLayout'
 import { useRoutes } from 'react-router-dom'
-import Svg from 'svg'
 
 import { generatePageConfigs } from './helpers'
 
 export const PATHS = {
   HOME_PAGE: '/',
   ABOUT_PAGE: '/about',
-  ICONS_PAGE: '/icons',
+  SVG_ICON_PAGE: '/svg-icons',
+  ICOMOON_PAGE: '/icomoon',
   LIST_BOOKS: '/books',
   // auth paths
   LOGIN_PAGE: '/auth/login',
@@ -19,25 +20,19 @@ export const PATHS = {
 const homePage = generatePageConfigs(() => import('pages/home'), {
   path: PATHS.HOME_PAGE,
   translation: 'home',
-  icon: <Svg.Home />,
+  icon: <Icon name="home" />,
 })
 
 const aboutPage = generatePageConfigs(() => import('pages/about'), {
   path: PATHS.ABOUT_PAGE,
   translation: 'about',
-  icon: <Svg.Info />,
-})
-
-const iconsPage = generatePageConfigs(() => import('pages/icons'), {
-  path: PATHS.ICONS_PAGE,
-  translation: 'icons',
-  icon: <Svg.Info />,
+  icon: <Icon name="info" />,
 })
 
 const listBookPage = generatePageConfigs(() => import('pages/books'), {
   path: PATHS.LIST_BOOKS,
   translation: 'list_book',
-  icon: <Svg.Books />,
+  icon: <Icon name="info" />,
 })
 
 // AuthLayout
@@ -49,9 +44,17 @@ const registerPage = generatePageConfigs(() => import('pages/auth/register'), {
   path: PATHS.REGISTER_PAGE,
 })
 
+// Dev only
+
+const IconPage = generatePageConfigs(() => import('pages/svg-icons'), {
+  path: PATHS.SVG_ICON_PAGE,
+  translation: 'svg-icons',
+  icon: <Icon name="info" />,
+})
+
 export const navigator = {
   nav_group_1: [homePage, aboutPage, listBookPage].map((page) => page.navigator),
-  development: [iconsPage].map((page) => page.navigator),
+  development: [IconPage].map((page) => page.navigator),
 }
 
 export const Routes = () =>
@@ -59,7 +62,7 @@ export const Routes = () =>
     {
       path: '/',
       element: <MainLayout />,
-      children: [homePage, aboutPage, iconsPage, listBookPage].map((page) => page.route),
+      children: [homePage, aboutPage, IconPage, listBookPage].map((page) => page.route),
     },
     {
       path: '/auth',
