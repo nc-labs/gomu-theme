@@ -8,6 +8,10 @@ const MuiButton = createTheme({
         variant: 'contained',
       },
       styleOverrides: {
+        root: {
+          lineHeight: 'normal',
+          textTransform: 'none',
+        },
         sizeSmall: {
           height: '32px',
           borderRadius: '16px',

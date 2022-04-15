@@ -5,7 +5,7 @@
     "source.fixAll.eslint": true
   },
   "files.insertFinalNewline": true,
-  "i18n-ally.localesPaths": ["public/locales"],
+  "i18n-ally.localesPaths": ["src/i18n/libs"],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sourceLanguage": "vi",
   "css.lint.unknownAtRules": "ignore"

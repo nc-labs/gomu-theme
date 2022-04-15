@@ -7,7 +7,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import clsx from 'clsx'
-import { Typography } from 'components'
+import { Typography, FlatList } from 'components'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ import MainNavItem from './MainNavItem'
 const MainNavMenu = ({ icon, translation, items }) => {
   const { pathname } = useLocation()
   const isActive = useMemo(
-    () => items.map((i) => i.url).includes(pathname),
+    () => items.map((item) => item.url).includes(pathname),
     [pathname, JSON.stringify(items)]
   )
   const { t } = useTranslation('navigator')
@@ -28,17 +28,15 @@ const MainNavMenu = ({ icon, translation, items }) => {
 
   return (
     <>
-      <ListItemButton sx={{ borderRadius: 1 }} onClick={handleClick} selected={isActive && !open}>
+      <ListItemButton className="rounded-2" onClick={handleClick} selected={isActive && !open}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
         <i className={clsx('icon-medium', open ? 'icon-up' : 'icon-down')} />
       </ListItemButton>
 
-      <Collapse in={open} sx={{ pl: 8 }}>
+      <Collapse in={open} className="pl-8">
         <List component={Stack} spacing={1} disablePadding>
-          {items.map((item, index) => (
-            <MainNavItem {...item} key={index} />
-          ))}
+          <FlatList data={items} renderItems={(item) => <MainNavItem {...item} />} />
         </List>
       </Collapse>
     </>

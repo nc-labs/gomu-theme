@@ -1,4 +1,7 @@
 @import './fontawesome/css/all.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {

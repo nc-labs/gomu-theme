@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { Drawer, useMediaQuery, CardMedia, Stack } from '@mui/material'
-import { Typography, Link } from 'components'
+import { drawerClasses, Drawer, useMediaQuery, CardMedia, Stack } from '@mui/material'
+import { Typography, Link, FlatList } from 'components'
 import { useLocation } from 'react-router-dom'
 import { navigator } from 'routes/routeConfigs'
 
@@ -28,7 +28,7 @@ const MainSideBar = () => {
   return (
     <Drawer
       sx={{
-        '& .MuiDrawer-paper': {
+        [`& .${drawerClasses.paper}`]: {
           width: MAIN_LAYOUT_CONFIGS.sideBarWidth,
           border: 'none',
         },
@@ -42,34 +42,31 @@ const MainSideBar = () => {
       }}
     >
       <Stack position="relative">
-        <Link to="/" alt="home" sx={{ position: 'sticky', top: 0, zIndex: 10 }}>
+        <Link to="/" alt="home" className="sticky top-0 z-[10]">
           <Stack
             direction="row"
             spacing={3}
-            sx={{
-              height: MAIN_LAYOUT_CONFIGS.toolbarHeight,
-              width: '100%',
-              px: 3,
-              background: (theme) => theme.palette.primary.main,
-              alignItems: 'center',
-              cursor: 'pointer',
-            }}
+            className="items-center w-full px-3 cursor-pointer bg-primary"
+            sx={{ height: MAIN_LAYOUT_CONFIGS.toolbarHeight }}
           >
             <CardMedia
               src="/assets/images/logo.png"
               component="img"
-              sx={{ height: 36, width: 36, flex: 0, borderRadius: 1 }}
+              className="h-[36px] w-[36px] flex-none rounded-2"
             />
-            <Typography variant="title" sx={{ color: (theme) => theme.palette.common.white }}>
+            <Typography variant="title" className="text-white">
               Edufit SSM
             </Typography>
           </Stack>
         </Link>
 
         <Stack p={MAIN_LAYOUT_CONFIGS.containerPadding}>
-          {Object.keys(navigator).map((translation, index) => (
-            <MainNavGroup translation={translation} items={navigator[translation]} key={index} />
-          ))}
+          <FlatList
+            data={Object.keys(navigator)}
+            renderItems={(translation) => (
+              <MainNavGroup translation={translation} items={navigator[translation]} />
+            )}
+          />
         </Stack>
       </Stack>
     </Drawer>

@@ -1,11 +1,16 @@
+import { useRecordDetails as useRecordDetailsHook } from 'hooks/useRecordDetails'
+import { useRecordList as useRecordListHook } from 'hooks/useRecordList'
+import { useRecordMutations as useRecordMutationsHook } from 'hooks/useRecordMutations'
 import axiosInstance from 'utils/axiosInstance'
 
 class CrudServices {
+  name = ''
   #path = ''
+  listAttributes = []
 
-  constructor(path) {
-    this.#path = path
-    this.name = 'Dinh'
+  constructor(name, path = '') {
+    this.name = name
+    this.#path = path || name
   }
 
   /**
@@ -33,7 +38,7 @@ class CrudServices {
    * @type {(payload: object, config: object) => Promise<any>}
    */
   save = ({ id, ...payload } = {}, config = {}) => {
-    if (id) return this.update(payload, config)
+    if (id) return this.update(id, payload, config)
 
     return this.create(payload, config)
   }
@@ -42,6 +47,10 @@ class CrudServices {
    * @type {(id: string, config: object) => Promise<any>}
    */
   delete = (id, config = {}) => axiosInstance.delete(`${this.#path}/${id}`, config)
+
+  useRecordList = () => useRecordListHook(this)
+  useRecordDetails = () => useRecordDetailsHook(this)
+  useRecordMutations = () => useRecordMutationsHook(this)
 }
 
 export default CrudServices

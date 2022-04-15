@@ -1,13 +1,10 @@
 import React from 'react'
 
 import { FormControlLabel, Checkbox as MuiCheckbox } from '@mui/material'
+import clsx from 'clsx'
 import { Controller } from 'react-hook-form'
 
 /**
- * @typedef {Omit<import('react-hook-form').UseControllerProps, 'render'>} ControllerProps
- * @typedef {Omit<import('@mui/material').FormControlLabelProps, 'control' | 'label'>} FormControlLabelProps
- * @typedef {import('@mui/material').CheckboxProps} CheckboxProps
- * @typedef {CheckboxProps & {labelProps?: FormControlLabelProps, checkboxProps?: CheckboxProps}} CheckboxProps
  * @type {React.ElementType<ControllerProps & CheckboxProps>}
  */
 const Checkbox = ({
@@ -41,15 +38,12 @@ const Checkbox = ({
             }}
           />
         }
+        className={clsx('ml-0', label ? 'mr-3' : 'mr-0')}
         sx={[
           invalid && {
             '& *': {
               color: 'error.main',
             },
-          },
-          {
-            ml: 0,
-            mr: label ? 3 : 0,
           },
         ]}
       />
@@ -58,3 +52,10 @@ const Checkbox = ({
 )
 
 export default React.memo(Checkbox)
+
+/**
+ * @typedef {Omit<import('react-hook-form').UseControllerProps, 'render'>} ControllerProps
+ * @typedef {Omit<import('@mui/material').FormControlLabelProps, 'control' | 'label'>} FormControlLabelProps
+ * @typedef {import('@mui/material').CheckboxProps} CheckboxProps
+ * @typedef {CheckboxProps & {labelProps?: FormControlLabelProps, checkboxProps?: CheckboxProps}} CheckboxProps
+ */

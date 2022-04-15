@@ -3,7 +3,7 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import List from '@mui/material/List'
 import ListSubheader from '@mui/material/ListSubheader'
-import { Typography } from 'components'
+import { Typography, FlatList } from 'components'
 import { useTranslation } from 'react-i18next'
 
 import MainNavItem from './MainNavItem'
@@ -17,15 +17,16 @@ const MainNavGroup = ({ translation, items }) => {
       component={Stack}
       spacing={1}
       subheader={
-        <ListSubheader sx={{ display: 'flex', height: 45, px: 0, alignItems: 'center' }}>
+        <ListSubheader className="flex h-[45px] px-0 items-center">
           <Typography variant="subtitle">{t(translation)}</Typography>
         </ListSubheader>
       }
       disablePadding
     >
-      {items.map((item, index) =>
-        item.items ? <MainNavMenu {...item} key={index} /> : <MainNavItem {...item} key={index} />
-      )}
+      <FlatList
+        data={items}
+        renderItems={(item) => (item.items ? <MainNavMenu {...item} /> : <MainNavItem {...item} />)}
+      />
     </List>
   )
 }

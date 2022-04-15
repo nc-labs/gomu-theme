@@ -18,6 +18,7 @@ const MainLayout = () => (
       {({ sidebarOpen }) => (
         <Box
           component="main"
+          className="bg-background"
           sx={{
             marginLeft: {
               lg: sidebarOpen ? `${MAIN_LAYOUT_CONFIGS.sideBarWidth}px` : 0,
@@ -27,7 +28,6 @@ const MainLayout = () => (
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
               }),
-            bgcolor: 'background.default',
           }}
         >
           <MainToolbar />

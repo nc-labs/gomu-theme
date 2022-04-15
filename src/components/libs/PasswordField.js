@@ -1,8 +1,9 @@
 import React from 'react'
 
-// import { Icon } from '@components/data-display'
-import { TextField, IconButton } from '@mui/material'
+import { TextField } from '@mui/material'
 import { useController, useFormContext } from 'react-hook-form'
+
+import IconButton from './IconButton'
 
 /**
  * @type {React.ElementType<PasswordFieldProps>}
@@ -27,10 +28,8 @@ const PasswordField = ({ name, label, placeholder, InputProps, onChange, ...prop
     return (
       <IconButton
         onClick={() => setType(isPassword ? '' : 'password')}
-        sx={isPassword ? {} : { '& svg': { color: (theme) => theme.palette.primary.main } }}
-      >
-        {/* <Icon name={isPassword ? 'eye' : 'eye-slash'} regular fontSize="small" /> */}
-      </IconButton>
+        name={isPassword ? 'view' : 'hidden'}
+      />
     )
   }, [type])
 

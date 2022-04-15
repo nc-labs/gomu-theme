@@ -11,6 +11,9 @@ const containerMinHeight = `calc(100vh - ${headerHeight + footerHeight}px)`
 
 const MainContainerContext = React.createContext({})
 
+/**
+ * @type {IMainContainer}
+ */
 const MainContainer = React.memo(({ children }) => {
   const [headerTitle, setHeaderTitle] = useState('')
   const [cardTitle, setCardTitle] = useState('')
@@ -37,7 +40,7 @@ const MainContainer = React.memo(({ children }) => {
               bgcolor="primary.main"
             >
               {typeof headerTitle === 'string' ? (
-                <Typography variant="heading" sx={{ color: (theme) => theme.palette.common.white }}>
+                <Typography variant="heading" className="text-white">
                   {headerTitle}
                 </Typography>
               ) : (
@@ -45,7 +48,7 @@ const MainContainer = React.memo(({ children }) => {
               )}
             </Stack>
 
-            <Paper sx={{ flex: 'auto' }}>
+            <Paper className="flex-auto">
               {cardTitle}
               {cardContent}
               {children}
@@ -112,3 +115,8 @@ MainContainer.CardContent = React.memo(({ children, ...props }) => {
 })
 
 export default MainContainer
+
+/**
+ * @typedef {import('@mui/material').BoxProps} BoxProps
+ * @typedef {{Header: React.FC<{}>, CardTitle: React.FC<{}>, CardContent: React.FC<{BoxProps}>}} IMainContainer
+ */

@@ -24,20 +24,15 @@ const MainUserSection = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          cursor: 'pointer',
-        }}
-        onClick={openPopover}
-      >
-        <Icon name="default-user" sx={{ height: 40, width: 40 }} />
+      <Box className="cursor-pointer" onClick={openPopover}>
+        <Icon name="default-user" className="h-[40px] w-[40px]" />
       </Box>
 
       <Popover {...popoverProps}>
-        <List sx={{ minWidth: 360 }}>
+        <List className="min-w-[360px]">
           <ListItemButton onClick={closePopover}>
             <ListItemIcon>
-              <Icon name="default-user" sx={{ height: 64, width: 64 }} />
+              <Icon name="default-user" className="h-[64px] w-[64px]" />
             </ListItemIcon>
 
             <ListItemText>

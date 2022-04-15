@@ -21,7 +21,7 @@ const lazy = (factory) => {
     return (
       <Suspense
         fallback={
-          <Backdrop open sx={{ position: 'absolute' }}>
+          <Backdrop open className="absolute">
             <CircularProgress />
           </Backdrop>
         }

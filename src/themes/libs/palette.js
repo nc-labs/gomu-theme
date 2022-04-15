@@ -1,3 +1,4 @@
+import { green, red } from '@mui/material/colors'
 import { createTheme } from '@mui/material/styles'
 
 const { palette } = createTheme({
@@ -7,12 +8,14 @@ const { palette } = createTheme({
     background: {
       default: '#F6F7F9',
     },
+    success: green,
+    error: red,
     text: {
       primary: '#242424',
       secondary: '#747475',
       disabled: '#A1A2A3',
     },
-    divider: '#DFE0EB',
+    divider: '#efeff5',
   },
 })
 

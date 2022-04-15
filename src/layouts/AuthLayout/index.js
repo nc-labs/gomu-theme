@@ -7,16 +7,13 @@ import AUTH_LAYOUT_CONFIGS from './configs'
 
 const AuthLayout = () => (
   <Stack
-    minHeight="100vh"
+    className="items-center justify-center min-h-screen bg-background"
     p={AUTH_LAYOUT_CONFIGS.containerPadding}
-    justifyContent="center"
-    alignItems="center"
-    bgcolor="background.default"
   >
     <Box
+      className="max-w-full"
       sx={{
         width: AUTH_LAYOUT_CONFIGS.containerWidth,
-        maxWidth: '100%',
       }}
     >
       <Outlet />

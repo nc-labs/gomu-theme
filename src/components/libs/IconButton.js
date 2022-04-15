@@ -17,6 +17,6 @@ export default React.memo(IconButton)
 
 /**
  * @typedef {import('@mui/material').IconButtonProps} MuiIconButtonProps
- * @typedef {import('./Icon').SvgNames} SvgNames
- * @typedef {{name: SvgNames} & MuiIconButtonProps} IconButtonProps
+ * @typedef {import('./Icon').TIconNames} TIconNames
+ * @typedef {{name: TIconNames} & MuiIconButtonProps} IconButtonProps
  */

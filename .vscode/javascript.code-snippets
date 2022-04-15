@@ -1,0 +1,19 @@
+{
+  "route-configs": {
+    "prefix": "ws:route",
+    "body": [
+      "import { ROUTE_PATHS } from 'routes/constants'",
+      "import { generatePageConfigs } from 'routes/helpers'",
+      "",
+      "const ${1:Example}Page = generatePageConfigs(() => import('./${1:Example}'), {",
+      "  path: ROUTE_PATHS.${2:ROUTE},",
+      "  translation: '${3:translation}',",
+      "  icon: '${4:icon}',",
+      "})",
+      "",
+      "export default ${1:Example}Page",
+      ""
+    ],
+    "description": "route-configs"
+  }
+}

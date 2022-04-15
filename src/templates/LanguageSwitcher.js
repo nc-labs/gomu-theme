@@ -6,10 +6,11 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
+import { FlatList } from 'components'
 import { usePopover } from 'hooks/usePopover'
 import { useTranslation } from 'react-i18next'
 
-import Icon from './Icon'
+import Icon from '../components/libs/Icon'
 
 const languages = [
   { id: 'vi', title: 'Tiếng việt', flag: <Icon name="vn-flag" /> },
@@ -31,19 +32,22 @@ const LanguageSwitcher = () => {
 
   return (
     <>
-      <Button className="w-64 h-40" onClick={openPopover} variant="text">
+      <Button onClick={openPopover} variant="text">
         {currentLanguage?.flag}
-        <Typography sx={{ ml: 3 }}>{currentLanguage?.id}</Typography>
+        <Typography className="ml-3">{currentLanguage?.id}</Typography>
       </Button>
 
       <Popover {...popoverProps}>
         <List>
-          {languages.map((lng) => (
-            <ListItemButton key={lng.id} onClick={() => handleLanguageChange(lng)}>
-              <ListItemIcon className="min-w-40">{lng.flag}</ListItemIcon>
-              <ListItemText primary={lng.title} />
-            </ListItemButton>
-          ))}
+          <FlatList
+            data={languages}
+            renderItems={(lng) => (
+              <ListItemButton onClick={() => handleLanguageChange(lng)}>
+                <ListItemIcon>{lng.flag}</ListItemIcon>
+                <ListItemText primary={lng.title} />
+              </ListItemButton>
+            )}
+          />
         </List>
       </Popover>
     </>

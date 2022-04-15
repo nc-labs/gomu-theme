@@ -9,16 +9,10 @@ const MainFooter = () => (
   <AppBar
     position="static"
     component="footer"
-    sx={{
-      display: 'flex',
-      height: MAIN_LAYOUT_CONFIGS.footerHeight,
-      px: 4,
-      alignItems: 'flex-end',
-      justifyContent: 'center',
-      bgcolor: 'background.default',
-    }}
+    className="flex items-end justify-center px-4 bg-background"
+    sx={{ height: MAIN_LAYOUT_CONFIGS.footerHeight }}
   >
-    <Typography color="muted" sx={{ fontSize: { xs: 10, md: 12 } }}>
+    <Typography color="muted" className="text-[10px] md:text-[12px]">
       Copyright © 2022. Bản quyền site thuộc về Công ty Edufit
     </Typography>
   </AppBar>

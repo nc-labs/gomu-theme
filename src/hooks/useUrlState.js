@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 
 import { mapValues, merge } from 'lodash'
 import { useSearchParams } from 'react-router-dom'
@@ -40,13 +40,13 @@ export const useUrlState = (initParams = {}) => {
   }, [searchParams.toString(), JSON.stringify(initParams)])
 
   const setParams = useCallback((paramsObject) => {
-    const currentParams = searchStringToParams(window.location.search)
+    const locationParams = searchStringToParams(window.location.search)
+    const currentParams = mapValues(
+      initParams,
+      (_val, key) => locationParams[key] || initParams[key]
+    )
 
     setSearchParams(objectToParams(merge({}, currentParams, paramsObject)), { replace: true })
-  }, [])
-
-  useEffect(() => {
-    setParams(params)
   }, [])
 
   return [params, setParams]

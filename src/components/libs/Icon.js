@@ -3,6 +3,8 @@ import React from 'react'
 import { SvgIcon as MuiSvgIcon } from '@mui/material'
 import { svgConfigs } from 'configs/svgConfigs'
 
+import FlatList from './FlatList'
+
 /**
  * @type {React.FC<SvgIconProps>}
  */
@@ -13,9 +15,10 @@ const SvgIcon = ({ name, ...props }) => {
 
   return (
     <MuiSvgIcon viewBox={icon.viewBox} {...props}>
-      {icon.children?.map(({ tagName, attrs }, index) =>
-        React.createElement(tagName, { ...attrs, key: index })
-      )}
+      <FlatList
+        data={icon.children}
+        renderItems={({ tagName, attrs }) => React.createElement(tagName, attrs)}
+      />
     </MuiSvgIcon>
   )
 }
@@ -24,6 +27,6 @@ export default React.memo(SvgIcon)
 
 /**
  * @typedef {import('@mui/material').SvgIconProps} MuiSvgIconProps
- * @typedef {keyof svgConfigs} SvgNames
- * @typedef {{name: SvgNames} & MuiSvgIconProps} SvgIconProps
+ * @typedef {keyof svgConfigs} TIconNames
+ * @typedef {{name: TIconNames} & MuiSvgIconProps} SvgIconProps
  */

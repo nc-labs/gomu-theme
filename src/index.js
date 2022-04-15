@@ -1,26 +1,16 @@
-import 'utils/i18n'
+import 'i18n'
 import 'styles/globals.scss'
 
 import React, { Suspense, useEffect } from 'react'
 
-import { minutesToMilliseconds, secondsToMilliseconds } from 'date-fns'
+import DevTools from 'modules/DevTools'
+import QueryProvider from 'modules/QueryProvider'
+import { SnackProvider } from 'modules/SnackBar'
 import ReactDOM from 'react-dom'
-import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { Routes } from 'routes/routeConfigs'
 import { DefaultThemeProvider } from 'themes'
 import { lazyFactoryPreload } from 'utils/lazy'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: minutesToMilliseconds(15),
-      cacheTime: minutesToMilliseconds(15),
-      refetchInterval: secondsToMilliseconds(5),
-      refetchOnWindowFocus: true,
-    },
-  },
-})
 
 const App = () => {
   useEffect(() => {
@@ -29,15 +19,19 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
+      <QueryProvider>
         <DefaultThemeProvider>
-          <BrowserRouter>
-            <Suspense fallback={<></>}>
-              <Routes />
-            </Suspense>
-          </BrowserRouter>
+          <SnackProvider>
+            <DevTools />
+
+            <BrowserRouter>
+              <Suspense fallback={<></>}>
+                <Routes />
+              </Suspense>
+            </BrowserRouter>
+          </SnackProvider>
         </DefaultThemeProvider>
-      </QueryClientProvider>
+      </QueryProvider>
     </React.StrictMode>
   )
 }

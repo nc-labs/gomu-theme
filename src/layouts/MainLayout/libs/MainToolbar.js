@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
 
 import { AppBar, Stack, Toolbar, IconButton } from '@mui/material'
-import { LanguageSwitcher, Icon } from 'components'
+import { Icon } from 'components'
+import LanguageSwitcher from 'templates/LanguageSwitcher'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 import { useMainLayoutState } from '../context'
@@ -12,12 +13,13 @@ const MainToolbar = () => {
   const { sidebarOpen, setSidebarOpen } = useMainLayoutState()
 
   return (
-    <AppBar
-      position="static"
-      component="header"
-      sx={{ bgcolor: (theme) => theme.palette.common.white }}
-    >
-      <Toolbar sx={{ height: MAIN_LAYOUT_CONFIGS.toolbarHeight, justifyContent: 'space-between' }}>
+    <AppBar position="sticky" component="header" className="top-0 left-0 bg-white">
+      <Toolbar
+        className="justify-between border-b-1 border-divider"
+        sx={{
+          height: MAIN_LAYOUT_CONFIGS.toolbarHeight,
+        }}
+      >
         <IconButton onClick={() => setSidebarOpen(!sidebarOpen)}>
           <Icon name="menu" />
         </IconButton>
