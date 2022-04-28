@@ -7,7 +7,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import clsx from 'clsx'
-import { Typography, FlatList } from 'components'
+import { Typography, FlatList } from 'modules/components'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 

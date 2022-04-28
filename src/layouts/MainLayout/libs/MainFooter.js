@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 
 import { AppBar } from '@mui/material'
-import { Typography } from 'components'
+import { Typography } from 'modules/components'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 

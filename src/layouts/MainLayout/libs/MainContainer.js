@@ -1,7 +1,7 @@
 import React, { useState, useContext, useLayoutEffect } from 'react'
 
 import { Box, Paper, Stack } from '@mui/material'
-import { Typography } from 'components'
+import { Typography } from 'modules/components'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 

@@ -5,9 +5,9 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import { styled } from '@mui/material/styles'
-import { Typography, FlatList, IconButton } from 'components'
 import { svgConfigs } from 'configs/svgConfigs'
 import { useDialog } from 'hooks/useDialog'
+import { Typography, FlatList, IconButton } from 'modules/components'
 import { encodeSvgFiles } from 'utils/svg'
 
 const Input = styled('input')({

@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import { Typography, Link } from 'components'
+import { Typography, Link } from 'modules/components'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 

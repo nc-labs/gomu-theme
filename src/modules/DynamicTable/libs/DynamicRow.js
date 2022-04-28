@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TableRow } from '@mui/material'
-import { FlatList } from 'components'
+import { FlatList } from 'modules/components'
 import { useDynamicTableState } from 'modules/DynamicTable/context'
 
 import RowActions from './RowActions'

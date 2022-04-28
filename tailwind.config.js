@@ -4,35 +4,6 @@ const spacingByStep = (count = 24, step = 4) => {
   const configs = {}
   Array.from(Array(count + 1).keys()).forEach((i) => (configs[i] = `${i * step}px`))
   return configs
-
-  // Kết quả khi count = 24, step = 4
-  // const configs = {
-  //   0: '0px',
-  //   1: '4px',
-  //   2: '8px',
-  //   3: '12px',
-  //   4: '16px',
-  //   5: '20px',
-  //   6: '24px',
-  //   7: '28px',
-  //   8: '32px',
-  //   9: '36px',
-  //   10: '40px',
-  //   11: '44px',
-  //   12: '48px',
-  //   13: '52px',
-  //   14: '56px',
-  //   15: '60px',
-  //   16: '64px',
-  //   17: '68px',
-  //   18: '72px',
-  //   19: '76px',
-  //   20: '80px',
-  //   21: '84px',
-  //   22: '88px',
-  //   23: '92px',
-  //   24: '96px',
-  // }
 }
 
 module.exports = {

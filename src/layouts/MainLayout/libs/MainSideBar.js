@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { drawerClasses, Drawer, useMediaQuery, CardMedia, Stack } from '@mui/material'
-import { Typography, Link, FlatList } from 'components'
+import { Typography, Link, FlatList } from 'modules/components'
 import { useLocation } from 'react-router-dom'
 import { navigator } from 'routes/routeConfigs'
 

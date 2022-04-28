@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Fade } from '@mui/material'
-import { IconButton } from 'components'
+import { IconButton } from 'modules/components'
 import { SnackbarProvider } from 'notistack'
 
 export const notistackRef = React.createRef(null)

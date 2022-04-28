@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { TableCell, CardMedia } from '@mui/material'
-import { Typography } from 'components'
 import { get } from 'lodash'
+import { Typography } from 'modules/components'
 import { formatDate, formatDatetime } from 'utils/datetime'
 
 const RowAttribute = ({ record, attribute }) => {

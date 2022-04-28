@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { TableCell, Stack } from '@mui/material'
-import { IconButton } from 'components'
 import { useCrudNavigate } from 'hooks/useCrudNavigate'
+import { IconButton } from 'modules/components'
 
 import { useDynamicTableState } from '../context'
 

@@ -1,4 +1,4 @@
-import { Icon } from 'components'
+import { Icon } from 'modules/components'
 import lazy from 'utils/lazy'
 
 /**
@@ -33,5 +33,5 @@ export const getNavigatorConfigs = (configs) =>
     : []
 
 /**
- * @typedef {import('components/libs/Icon').TIconNames} TIconNames
+ * @typedef {import('modules/components/libs/Icon').TIconNames} TIconNames
  */
