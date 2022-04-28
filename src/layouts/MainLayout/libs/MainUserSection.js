@@ -11,8 +11,8 @@ import {
   ListItemText,
   ListItemButton,
 } from '@mui/material'
+import { Icon } from 'components'
 import { usePopover } from 'hooks/usePopover'
-import { Icon } from 'modules/components'
 
 const mockUser = {
   avt: '',

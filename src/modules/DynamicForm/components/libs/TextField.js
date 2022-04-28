@@ -3,9 +3,7 @@ import React, { useCallback } from 'react'
 import { TextField as MuiTextField } from '@mui/material'
 import { useController, useFormContext } from 'react-hook-form'
 
-/**
- * @type {React.FC<TextFieldProps>}
- */
+/** @type {React.FC<TextFieldProps>} */
 const TextField = ({ name, label, placeholder, onChange, InputLabelProps, ...props }) => {
   const { control } = useFormContext()
 
@@ -41,6 +39,4 @@ const TextField = ({ name, label, placeholder, onChange, InputLabelProps, ...pro
 
 export default React.memo(TextField)
 
-/**
- * @typedef {Omit<import('@mui/material').TextFieldProps, | 'error' | 'helperText'>} TextFieldProps
- */
+/** @typedef {Omit<import('@mui/material').TextFieldProps, | 'error' | 'helperText'>} TextFieldProps */

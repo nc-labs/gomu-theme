@@ -1,4 +1,5 @@
 {
   "date_format": "dd/MM/yyyy",
-  "datetime_format": "HH:mm dd/MM/yyyy"
+  "datetime_format": "HH:mm dd/MM/yyyy",
+  "time_format": "HH:mm"
 }

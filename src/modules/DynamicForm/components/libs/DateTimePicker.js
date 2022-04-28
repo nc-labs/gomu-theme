@@ -6,7 +6,7 @@ import { default as MuiDateTimePicker } from '@mui/lab/MobileDateTimePicker'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import { TextField, dialogActionsClasses, Tab } from '@mui/material'
-import { IconButton, Icon } from 'modules/components'
+import { IconButton, Icon } from 'components'
 import { useController, useFormContext } from 'react-hook-form'
 
 const ToolbarComponent = React.memo(({ setOpenView, openView }) => {
@@ -36,9 +36,7 @@ const ToolbarComponent = React.memo(({ setOpenView, openView }) => {
   )
 })
 
-/**
- * @type {React.FC<DateTimePickerProps>}
- */
+/** @type {React.FC<DateTimePickerProps>} */
 const DateTimePicker = ({ name, label, inputFormat = 'dd/MM/yyyy HH:mm', onChange, ...props }) => {
   const { control } = useFormContext()
   const input = useRef(null)
@@ -112,6 +110,4 @@ const DateTimePicker = ({ name, label, inputFormat = 'dd/MM/yyyy HH:mm', onChang
 
 export default React.memo(DateTimePicker)
 
-/**
- * @typedef {import('@mui/lab/MobileDateTimePicker').MobileDateTimePickerProps & {name: string}} DateTimePickerProps
- */
+/** @typedef {import('@mui/lab/MobileDateTimePicker').MobileDateTimePickerProps & {name: string}} DateTimePickerProps */

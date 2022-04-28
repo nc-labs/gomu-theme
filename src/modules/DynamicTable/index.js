@@ -2,8 +2,8 @@ import React, { useMemo } from 'react'
 
 import { Table, TableCell, TableHead, TableRow, TableBody, Paper, Stack } from '@mui/material'
 import { Box } from '@mui/system'
+import { FlatList, BackdropLoading } from 'components'
 import MAIN_LAYOUT_CONFIGS from 'layouts/MainLayout/configs'
-import { FlatList, BackdropLoading } from 'modules/components'
 import Pagination from 'modules/DynamicTable/libs/Pagination'
 
 import { DynamicTableProvider } from './context'

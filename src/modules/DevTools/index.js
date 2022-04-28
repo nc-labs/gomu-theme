@@ -5,10 +5,10 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import { styled } from '@mui/material/styles'
+import { Typography, FlatList, IconButton } from 'components'
 import { svgConfigs } from 'configs/svgConfigs'
 import { useDialog } from 'hooks/useDialog'
-import { Typography, FlatList, IconButton } from 'modules/components'
-import { encodeSvgFiles } from 'utils/svg'
+import { encodeSvgFiles } from 'modules/DevTools/helpers'
 
 const Input = styled('input')({
   display: 'none',
@@ -51,9 +51,19 @@ const DevTools = () => {
   )
 
   useLayoutEffect(() => {
-    const blob = new Blob([`export const svgConfigs = ${JSON.stringify(icons)}`], {
-      type: 'text/plain',
-    })
+    const blob = new Blob(
+      [
+        [
+          '/* eslint-disable */',
+          '// prettier-ignore',
+          `export const svgConfigs = ${JSON.stringify(icons)}`,
+          '',
+        ].join('\r\n'),
+      ],
+      {
+        type: 'text/plain',
+      }
+    )
 
     setHref(window.URL.createObjectURL(blob))
   }, [JSON.stringify(icons)])
@@ -73,7 +83,7 @@ const DevTools = () => {
         </DialogTitle>
 
         <DialogContent className="max-h-[50vh]">
-          <Stack direction="row" width="100%" justifyContent="space-between" flexWrap="wrap">
+          <Stack direction="row" width="100%" flexWrap="wrap">
             <FlatList
               data={Object.keys(icons).sort()}
               renderItems={(iconName) => <ShowIcon name={iconName} {...icons[iconName]} />}

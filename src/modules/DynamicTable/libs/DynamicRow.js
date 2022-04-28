@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { TableRow } from '@mui/material'
-import { FlatList } from 'modules/components'
+import { TableCell, TableRow } from '@mui/material'
+import { FlatList } from 'components'
 import { useDynamicTableState } from 'modules/DynamicTable/context'
 
 import RowActions from './RowActions'
@@ -17,7 +17,11 @@ const DynamicRow = ({ record }) => {
 
       <FlatList
         data={columns}
-        renderItems={(attribute) => <RowAttribute record={record} attribute={attribute} />}
+        renderItems={(attribute) => (
+          <TableCell>
+            <RowAttribute record={record} attribute={attribute} />
+          </TableCell>
+        )}
       />
 
       <RowActions id={record?.id} />

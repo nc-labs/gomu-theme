@@ -4,9 +4,7 @@ import { IconButton as MuiIconButton } from '@mui/material'
 
 import Icon from './Icon'
 
-/**
- * @type {React.FC<IconButtonProps>}
- */
+/** @type {React.FC<IconButtonProps>} */
 const IconButton = ({ name, size, ...props }) => (
   <MuiIconButton size={size} {...props}>
     <Icon name={name} fontSize={size} />

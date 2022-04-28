@@ -1,7 +1,7 @@
 import React, { useState, useContext, useLayoutEffect } from 'react'
 
 import { Box, Paper, Stack } from '@mui/material'
-import { Typography } from 'modules/components'
+import { Typography } from 'components'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'
 
@@ -11,9 +11,6 @@ const containerMinHeight = `calc(100vh - ${headerHeight + footerHeight}px)`
 
 const MainContainerContext = React.createContext({})
 
-/**
- * @type {IMainContainer}
- */
 const MainContainer = React.memo(({ children }) => {
   const [headerTitle, setHeaderTitle] = useState('')
   const [cardTitle, setCardTitle] = useState('')
@@ -115,8 +112,3 @@ MainContainer.CardContent = React.memo(({ children, ...props }) => {
 })
 
 export default MainContainer
-
-/**
- * @typedef {import('@mui/material').BoxProps} BoxProps
- * @typedef {{Header: React.FC<{}>, CardTitle: React.FC<{}>, CardContent: React.FC<{BoxProps}>}} IMainContainer
- */

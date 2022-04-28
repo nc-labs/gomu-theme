@@ -19,7 +19,7 @@
   },
   "rules": {
     "prettier/prettier": [
-      "error",
+      2,
       {
         "arrowParens": "always",
         "bracketSameLine": false,
@@ -64,7 +64,7 @@
     "react-hooks/exhaustive-deps": 0,
     "react/jsx-indent-props": [2, 2],
     "react/self-closing-comp": [
-      "error",
+      2,
       {
         "component": true,
         "html": true
@@ -72,6 +72,8 @@
     ],
     "no-duplicate-imports": 2,
     "react/style-prop-object": 0,
-    "arrow-body-style": ["error", "as-needed"]
+    "arrow-body-style": [2, "as-needed"],
+    "object-shorthand": [2, "always"],
+    "no-template-curly-in-string": 2
   }
 }

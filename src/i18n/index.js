@@ -1,11 +1,10 @@
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
-import storage from 'utils/storage'
 
 const DEFAULT_LANGUAGE = 'vi'
 
-storage.getItem('i18nextLng') || storage.setItem('i18nextLng', DEFAULT_LANGUAGE)
+localStorage.getItem('i18nextLng') || localStorage.setItem('i18nextLng', DEFAULT_LANGUAGE)
 
 const resources = {
   en: {},

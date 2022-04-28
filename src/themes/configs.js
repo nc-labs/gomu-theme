@@ -1,5 +1,5 @@
 const THEME_CONFIGS = {
-  // fontFamily: "'Noto Sans', sans-serif",
+  fontFamily: "'Noto Sans', sans-serif",
   spacing: 4,
   borderRadius: 8,
 }

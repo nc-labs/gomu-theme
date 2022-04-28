@@ -20,20 +20,16 @@ const COLOR_MAPPING = {
   inherit: 'inherit',
 }
 
-/**
- * @type {React.FC<ITypographyProps>}
- */
+/**  @type {React.FC<ITypographyProps>} */
 const Typography = React.forwardRef(
-  ({ variant = 'body', color = 'inherit', children, component = 'p', ...props }, ref) => (
+  ({ variant = 'body', color = 'inherit', component = 'p', ...props }, ref) => (
     <MuiTypography
       ref={ref}
       variant={VARIANT_MAPPING[variant]}
       color={COLOR_MAPPING[color]}
       component={component}
       {...props}
-    >
-      {children}
-    </MuiTypography>
+    />
   )
 )
 

@@ -1,7 +1,7 @@
 import { ROUTE_PATHS } from 'routes/constants'
-import { generatePageConfigs } from 'routes/helpers'
+import { createPage } from 'routes/helpers'
 
-const RegisterPage = generatePageConfigs(() => import('./Register'), {
+const RegisterPage = createPage(() => import('./Register'), {
   path: ROUTE_PATHS.REGISTER_PAGE,
 })
 

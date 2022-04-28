@@ -3,9 +3,7 @@ import React, { useCallback } from 'react'
 import { Autocomplete, TextField } from '@mui/material'
 import { useController, useFormContext } from 'react-hook-form'
 
-/**
- * @type {React.FC<SelectProps>}
- */
+/** @type {React.FC<SelectProps>} */
 const Select = ({ name, label, placeholder, options = [], multiple = false, ...props }) => {
   const { control } = useFormContext()
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TableCell } from '@mui/material'
-import { FlatList, Typography } from 'modules/components'
+import { FlatList, Typography } from 'components'
 import { useTranslation } from 'react-i18next'
 
 import { useDynamicTableState } from '../context'

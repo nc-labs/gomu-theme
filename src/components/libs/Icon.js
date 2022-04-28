@@ -5,9 +5,7 @@ import { svgConfigs } from 'configs/svgConfigs'
 
 import FlatList from './FlatList'
 
-/**
- * @type {React.FC<SvgIconProps>}
- */
+/** @type {React.FC<SvgIconProps>} */
 const SvgIcon = ({ name, ...props }) => {
   const icon = svgConfigs[name]
 

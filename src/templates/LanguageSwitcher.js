@@ -6,11 +6,11 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
+import { FlatList } from 'components'
 import { usePopover } from 'hooks/usePopover'
-import { FlatList } from 'modules/components'
 import { useTranslation } from 'react-i18next'
 
-import Icon from '../modules/components/libs/Icon'
+import Icon from '../components/libs/Icon'
 
 const languages = [
   { id: 'vi', title: 'Tiếng việt', flag: <Icon name="vn-flag" /> },

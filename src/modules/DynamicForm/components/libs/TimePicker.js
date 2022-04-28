@@ -4,11 +4,10 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import { default as MuiTimePicker } from '@mui/lab/MobileTimePicker'
 import { TextField, dialogActionsClasses } from '@mui/material'
-import { IconButton } from 'modules/components'
+import { IconButton } from 'components'
 import { useController, useFormContext } from 'react-hook-form'
-/**
- * @type {React.FC<TimePickerProps>}
- */
+
+/** @type {React.FC<TimePickerProps>} */
 const TimePicker = ({ name, label, inputFormat = 'HH:mm', onChange, ...props }) => {
   const { control } = useFormContext()
   const input = useRef(null)
@@ -80,6 +79,4 @@ const TimePicker = ({ name, label, inputFormat = 'HH:mm', onChange, ...props }) 
 
 export default React.memo(TimePicker)
 
-/**
- * @typedef {import('@mui/lab/MobileTimePicker').MobileTimePickerProps & {name: string}} TimePickerProps
- */
+/** @typedef {import('@mui/lab/MobileTimePicker').MobileTimePickerProps & {name: string}} TimePickerProps */

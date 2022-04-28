@@ -3,7 +3,7 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import List from '@mui/material/List'
 import ListSubheader from '@mui/material/ListSubheader'
-import { Typography, FlatList } from 'modules/components'
+import { Typography, FlatList } from 'components'
 import { useTranslation } from 'react-i18next'
 
 import MainNavItem from './MainNavItem'

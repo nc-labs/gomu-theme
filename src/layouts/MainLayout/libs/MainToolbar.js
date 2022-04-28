@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 
 import { AppBar, Stack, Toolbar, IconButton } from '@mui/material'
-import { Icon } from 'modules/components'
+import { Icon } from 'components'
 import LanguageSwitcher from 'templates/LanguageSwitcher'
 
 import MAIN_LAYOUT_CONFIGS from '../configs'

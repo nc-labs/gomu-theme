@@ -23,9 +23,7 @@ const NumberFormatCustom = React.forwardRef(({ onChange, ...props }, ref) => {
   )
 })
 
-/**
- * @type {React.ElementType<NumberFieldProps>}
- */
+/** @type {React.ElementType<NumberFieldProps>} */
 const NumberField = (props) => {
   const { name, label, placeholder, InputProps, InputLabelProps, onChange, ...rentProps } = props
   const { control } = useFormContext()
@@ -66,6 +64,4 @@ const NumberField = (props) => {
 
 export default React.memo(NumberField)
 
-/**
- * @typedef {Omit<import('@mui/material').TextFieldProps, 'error' | 'helperText'>} NumberFieldProps
- */
+/** @typedef {Omit<import('@mui/material').TextFieldProps, 'error' | 'helperText'>} NumberFieldProps */

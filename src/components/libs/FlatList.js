@@ -1,11 +1,6 @@
 import React from 'react'
 
-/**
- * @param {object} props
- * @param {any[]} props.data
- * @param {(item: any) => JSX} props.renderItems
- * @param {any[]} props.dependencies
- */
+/** @type {TFlatList} */
 const FlatList = ({ data, renderItems }) => {
   if (!Array.isArray(data) || typeof renderItems !== 'function') return <></>
 
@@ -18,6 +13,7 @@ const FlatList = ({ data, renderItems }) => {
   )
 }
 
+/** @type {TFlatList} */
 export default React.memo(
   FlatList,
   (
@@ -39,3 +35,7 @@ export default React.memo(
     }
   }
 )
+
+/**
+ * @typedef {React.FC<<T extends {}>(props: {data: T[], renderItems: React.FC<{item: T}>})>} TFlatList
+ */

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 
 import { CircularProgress, Backdrop } from '@mui/material'
 
@@ -40,10 +40,14 @@ const lazy = (factory) => {
   return LazyComponent
 }
 
-export const lazyFactoryPreload = async () => {
+const lazyFactoryPreload = async () => {
   try {
     await Promise.all(lazyFactories.map((preload) => preload()))
   } catch {}
+}
+
+export const usePreload = () => {
+  useEffect(lazyFactoryPreload, [])
 }
 
 export default lazy

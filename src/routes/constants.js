@@ -1,4 +1,5 @@
 export const ROUTE_PATHS = {
+  // main paths
   HOME_PAGE: '/',
   ABOUT_PAGE: '/about',
   SVG_ICON_PAGE: '/developments/svg-icons',

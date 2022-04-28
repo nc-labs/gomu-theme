@@ -4,9 +4,7 @@ import { FormControlLabel, Checkbox as MuiCheckbox } from '@mui/material'
 import clsx from 'clsx'
 import { useFormContext, useController } from 'react-hook-form'
 
-/**
- * @type {React.ElementType<CheckboxProps>}
- */
+/** @type {React.ElementType<CheckboxProps>} */
 const Checkbox = ({ name, label, onChange, ...props }) => {
   const { control } = useFormContext()
 

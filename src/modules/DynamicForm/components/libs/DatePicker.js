@@ -4,12 +4,10 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import MobileDatePicker from '@mui/lab/MobileDatePicker'
 import { TextField, dialogActionsClasses } from '@mui/material'
-import { IconButton } from 'modules/components'
+import { IconButton } from 'components'
 import { useController, useFormContext } from 'react-hook-form'
 
-/**
- * @type {React.FC<DatePickerProps>}
- */
+/** @type {React.FC<DatePickerProps>} */
 const DatePicker = ({ name, label, inputFormat = 'dd/MM/yyyy', onChange, ...props }) => {
   const { control } = useFormContext()
   const input = useRef(null)
@@ -83,6 +81,4 @@ const DatePicker = ({ name, label, inputFormat = 'dd/MM/yyyy', onChange, ...prop
 
 export default React.memo(DatePicker)
 
-/**
- * @typedef {import('@mui/lab/MobileDatePicker').MobileDatePickerProps & {name: string}} DatePickerProps
- */
+/** @typedef {import('@mui/lab/MobileDatePicker').MobileDatePickerProps & {name: string}} DatePickerProps */

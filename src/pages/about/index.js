@@ -1,7 +1,7 @@
 import { ROUTE_PATHS } from 'routes/constants'
-import { generatePageConfigs } from 'routes/helpers'
+import { createPage } from 'routes/helpers'
 
-const AboutPage = generatePageConfigs(() => import('./About'), {
+const AboutPage = createPage(() => import('./About'), {
   path: ROUTE_PATHS.ABOUT_PAGE,
   translation: 'about',
   icon: 'info',

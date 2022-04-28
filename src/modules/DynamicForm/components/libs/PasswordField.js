@@ -1,12 +1,10 @@
 import React, { useState, useCallback, useMemo } from 'react'
 
 import { TextField } from '@mui/material'
-import { IconButton } from 'modules/components'
+import { IconButton } from 'components'
 import { useController, useFormContext } from 'react-hook-form'
 
-/**
- * @type {React.ElementType<PasswordFieldProps>}
- */
+/** @type {React.ElementType<PasswordFieldProps>} */
 const PasswordField = (props) => {
   const { name, label, placeholder, InputProps, InputLabelProps, onChange, ...rentProps } = props
   const [type, setType] = useState('password')
@@ -59,6 +57,4 @@ const PasswordField = (props) => {
 
 export default React.memo(PasswordField)
 
-/**
- * @typedef {Omit<import('@mui/material').TextFieldProps, 'error' | 'helperText'>} PasswordFieldProps
- */
+/** @typedef {Omit<import('@mui/material').TextFieldProps, 'error' | 'helperText'>} PasswordFieldProps */

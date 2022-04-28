@@ -6,7 +6,6 @@ export const useCrudNavigate = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const { id } = useParams()
-
   const isNewPage = pathname.endsWith('/new')
   const isEditPage = Boolean(id)
   const isListPage = !isNewPage && !isEditPage
