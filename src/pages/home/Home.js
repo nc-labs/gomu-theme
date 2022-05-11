@@ -1,15 +1,7 @@
 import React from 'react'
 
 import { Typography } from '@mui/material'
-import MainContainer from 'layouts/MainLayout/libs/MainContainer'
 
-const Home = () => (
-  <>
-    <MainContainer.Header>Home Page</MainContainer.Header>
-    <MainContainer.CardContent>
-      <Typography>Home</Typography>
-    </MainContainer.CardContent>
-  </>
-)
+const Home = () => <Typography>Home</Typography>
 
 export default React.memo(Home)

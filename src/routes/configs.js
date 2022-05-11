@@ -2,15 +2,12 @@ import { AuthLayout, MainLayout } from 'layouts'
 import AboutPage from 'pages/about'
 import LoginPage from 'pages/auth/login'
 import RegisterPage from 'pages/auth/register'
-import BookDetailsPage from 'pages/books/details'
-import BookListPage from 'pages/books/list'
+import { BookListPage, BookDetailsPage } from 'pages/books'
 import HomePage from 'pages/home'
 
 import { getRouteConfigs, getNavigatorConfigs } from './helpers'
 
-export const navigator = {
-  nav_group_1: getNavigatorConfigs([HomePage, AboutPage, BookListPage]),
-}
+export const navigator = getNavigatorConfigs([HomePage, AboutPage, BookListPage])
 
 export const routes = [
   {

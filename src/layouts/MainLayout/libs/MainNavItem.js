@@ -3,6 +3,7 @@ import React, { useMemo } from 'react'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import clsx from 'clsx'
 import { Typography, Link } from 'components'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
@@ -14,7 +15,12 @@ const MainNavItem = ({ icon, translation, url }) => {
 
   return (
     <Link to={url} alt={translation}>
-      <ListItemButton className="rounded-2" selected={isActive}>
+      <ListItemButton
+        className={clsx(
+          'rounded-2 transition-all duration-150 ease-linear',
+          isActive && 'text-white bg-primary'
+        )}
+      >
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={<Typography>{t(translation)}</Typography>} />
       </ListItemButton>
