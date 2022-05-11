@@ -12,9 +12,7 @@ const resources = {
     common: require('./libs/vi/common.json'),
     components: require('./libs/vi/components.json'),
     navigator: require('./libs/vi/navigator.json'),
-    page: {
-      books: require('./libs/vi/pages/books.json'),
-    },
+    'pages.books': require('./libs/vi/pages/books.json'),
   },
 }
 

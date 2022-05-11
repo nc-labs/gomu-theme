@@ -1,13 +1,12 @@
-import 'i18n'
+import 'locales'
 import 'styles/globals.scss'
 
 import React from 'react'
 
-import DevTools from 'modules/DevTools'
-import QueryProvider from 'modules/QueryProvider'
-import { SnackProvider } from 'modules/SnackBar'
 import ReactDOM from 'react-dom'
 import { RouteProvider } from 'routes'
+import QueryProvider from 'templates/QueryProvider'
+import { SnackProvider } from 'templates/SnackBar'
 import { DefaultThemeProvider } from 'themes'
 import { usePreload } from 'utils/lazy'
 
@@ -21,7 +20,6 @@ const App = () => {
       <QueryProvider>
         <DefaultThemeProvider>
           <SnackProvider>
-            <DevTools />
             <RouteProvider />
           </SnackProvider>
         </DefaultThemeProvider>

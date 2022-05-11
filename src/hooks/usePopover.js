@@ -20,7 +20,7 @@ export const usePopover = () => {
       },
     },
     isOpen: Boolean(menu),
-    openPopover: openPopover,
-    closePopover: closePopover,
+    openPopover,
+    closePopover,
   }
 }

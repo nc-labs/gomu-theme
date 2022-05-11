@@ -8,6 +8,7 @@ const MuiListItemIcon = createTheme({
         root: {
           minWidth: 'unset',
           marginRight: THEME_CONFIGS.spacing * 4,
+          color: 'inherit',
         },
       },
     },

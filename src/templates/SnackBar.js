@@ -14,25 +14,21 @@ const action = (key) => (
   />
 )
 
-const classes = {
-  variantSuccess: 'bg-success-50 text-success-900',
-  variantError: 'bg-error-50 text-error-900',
-}
-
-const anchorOrigin = {
-  vertical: 'top',
-  horizontal: 'center',
-}
-
 export const SnackProvider = ({ children }) => (
   <SnackbarProvider
     ref={notistackRef}
     maxSnack={2}
-    anchorOrigin={anchorOrigin}
+    anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
     TransitionComponent={Fade}
     autoHideDuration={2500}
     action={action}
-    classes={classes}
+    classes={{
+      variantSuccess: 'bg-success-50 text-success-900',
+      variantError: 'bg-error-50 text-error-900',
+    }}
   >
     {children}
   </SnackbarProvider>
