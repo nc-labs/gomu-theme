@@ -1,3 +1,4 @@
+import '@locales'
 import React from 'react'
 import { DefaultThemeProvider } from '@themes'
 import ReactDOM from 'react-dom/client'
