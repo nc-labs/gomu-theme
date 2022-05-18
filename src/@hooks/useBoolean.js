@@ -5,12 +5,11 @@ import { useCallback, useState } from 'react'
  * @returns {[boolean, (state?: boolean) => void]}
  */
 export const useBoolean = (initialState) => {
-  const [boolean, setBoolean] = useState(initialState || false)
-  const toggle = useCallback((prev) => !prev, [])
+  const [state, setBoolean] = useState(initialState || false)
 
-  const toggleBoolean = useCallback((state = undefined) => {
-    setBoolean([true, false].includes(state) ? state : toggle)
+  const toggle = useCallback((state = undefined) => {
+    setBoolean([true, false].includes(state) ? state : (prev) => !prev)
   }, [])
 
-  return [boolean, toggleBoolean]
+  return [state, toggle]
 }
