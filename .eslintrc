@@ -73,6 +73,7 @@
     "react/style-prop-object": 0,
     "arrow-body-style": [2, "as-needed"],
     "object-shorthand": [2, "always"],
-    "no-template-curly-in-string": 2
+    "no-template-curly-in-string": 2,
+    "import/no-anonymous-default-export": 0
   }
 }
