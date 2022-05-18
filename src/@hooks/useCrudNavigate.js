@@ -11,14 +11,8 @@ export const useCrudNavigate = () => {
   const isListPage = !isNewPage && !isEditPage
 
   const basePath = useMemo(() => {
-    if (isEditPage) {
-      return pathname.replace(`/${id}`, '')
-    }
-
-    if (isNewPage) {
-      return pathname.replace('/new', '')
-    }
-
+    if (isEditPage) return pathname.replace(`/${id}`, '')
+    if (isNewPage) return pathname.replace('/new', '')
     return pathname
   }, [id, isEditPage, isListPage])
 

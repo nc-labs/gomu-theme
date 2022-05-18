@@ -1,0 +1,40 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="hooks/useRecordList" />
+
+# useRecordList
+
+Chuẩn hóa việc quản lý server state cho các màn hình Record list bao gồm:
+
+- caching
+- pagination
+
+## Ý tưởng
+
+- Sử dụng `react-query` để caching response từ server và re-fresh sau một thời gian nhất định
+- Sử dụng `urlState` để thực hiện pagination (hỗ trợ nhiều list trên 1 cùng page)
+- dữ liệu của `useRecordList` trong kho cache sẽ được dùng làm dữ liệu khởi tạo cho
+  [useRecordDetails](/docs/hooks-userecorddetails--page) tương ứng
+
+## API
+
+```js
+const { onPageChange, onPageSizeChange, ...recordListQuery } = useRecordList(name, fetcher)
+```
+
+## Params
+
+| Property  | Mô tả                                       | Kiểu dữ liệu                |
+| --------- | ------------------------------------------- | --------------------------- |
+| `name `   | tên resource, sẽ dùng làm cache key         | `string`                    |
+| `fetcher` | API thực thi việc tìm nạp dữ liệu từ server | `(id: any) => Promise<any>` |
+
+## Result
+
+| Property           | Mô tả                                                                                                                                                                  | Kiểu dữ liệu                    |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `onPageChange`     | hàm xử lý việc chuyển page (pagination), sẽ thực hiện tìm nạp dữ liệu của page mới (nếu chưa được cache), nếu chuyển tới page đã được cache, hàm này không gọi lại API | `(newPage: number) => void`     |
+| `onPageSizeChange` | tương tự `onPageChange`, hàm này để xử lý thay đổi tùy chọn số bản ghi trên trang                                                                                      | `(newPageSize: number) => void` |
+| `recordListQuery`  | toàn bộ dữ liệu được trả về từ hook [useQuery](https://react-query.tanstack.com/reference/useQuery) của `react-query`                                                  | `object`                        |
+
+_các methods đã được wrap bởi `useCallback`_

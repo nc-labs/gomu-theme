@@ -22,7 +22,7 @@ const NavGroup = ({ nav, level }) =>
 const NavMenu = ({ nav, level }) => {
   const { pathname } = useLocation()
   const isActive = Boolean(nav.children.find((item) => item.pathname === pathname))
-  const [open, toggle] = useBoolean(isActive)
+  const [open, { toggle }] = useBoolean(isActive)
 
   return (
     <>

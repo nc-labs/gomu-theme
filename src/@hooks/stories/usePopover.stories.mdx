@@ -1,0 +1,72 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="hooks/usePopover" />
+
+# usePopover
+
+Trước tiên hãy xem lại cách sử dụng `MuiPopover` mà trang chủ
+[Mui](https://mui.com/material-ui/react-popover/#main-content) hướng dẫn sử dụng Popover
+
+```js
+import * as React from 'react'
+import Popover from '@mui/material/Popover'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+
+export default function BasicPopover() {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
+
+  return (
+    <div>
+      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        Open Popover
+      </Button>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+      </Popover>
+    </div>
+  )
+}
+```
+
+Việc khai báo các methods `handleClick`, `handleClose` là cần thiết, tuy nhiên mỗi component sử dụng
+`MuiPopover` đều cần làm vậy, ngoài ra, các methods này cần được wrap bởi `useCallback` để tránh
+việc re-init nhiều lần trong quá trình render. Vì vậy `usePopover` giải quyết vấn đề lặp lại code và
+để tối giản hóa component sử dụng `MuiPopover`
+
+## API
+
+```js
+const { open, anchorEl, openPopover, closePopover } = usePopover()
+```
+
+## Result
+
+| Property       | Mô tả                              | Kiểu dữ liệu | Ghi chú                                                                   |
+| -------------- | ---------------------------------- | ------------ | ------------------------------------------------------------------------- |
+| `open`         | `open` prop truyền vào Popover     | `boolean`    | Đọc thêm về props của [Popover](https://mui.com/material-ui/api/popover/) |
+| `anchorEl`     | `anchorEl` prop truyền vào Popover | `ref`        | Đọc thêm về props của [Popover](https://mui.com/material-ui/api/popover/) |
+| `openPopover`  | mở popover                         | `() => void` |                                                                           |
+| `closePopover` | đóng popover                       | `() => void` |                                                                           |
+
+_các methods đã được wrap bởi `useCallback`_

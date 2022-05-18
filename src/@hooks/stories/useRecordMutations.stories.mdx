@@ -1,0 +1,44 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="hooks/useRecordMutations" />
+
+# useRecordMutations
+
+Chuẩn hóa việc cập nhật server state cho Record cho các actions:
+
+- Delete record
+- Save Record
+
+Tìm hiểu khái niệm [mutation](https://react-query.tanstack.com/reference/useMutation)
+
+## Ý tưởng
+
+- Invalidate tất cả các query tương ứng ([useRecordList](/docs/hooks-userecordlist--page) và
+  [useRecordDetails](/docs/hooks-userecorddetails--page))
+
+_Các query bị invalidate sẽ buộc phải tìm nạp lại dữ liệu từ server trong lần render tiếp theo_
+
+## API
+
+```js
+const { saveRecordMutation, deleteRecordMutation } = useRecordMutations(
+  name,
+  saveHandler,
+  deleteHanlder
+)
+```
+
+## Params
+
+| Property        | Mô tả                                                                                                                                                                                                                               | Kiểu dữ liệu                        |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `name `         | tên resource, sẽ dùng làm cache key, tên này phải trùng với tên đặt cho [useRecordList](/docs/hooks-userecordlist--page) và [useRecordDetails](/docs/hooks-userecorddetails--page) tương ứng                                        | `string`                            |
+| `saveHandler`   | API thực thi việc lưu record (create khi tạo mới và update khi cập nhật - đối với payload có chứ `id`, ngầm hiểm hành động save tương ứng với update, ngược lại nếu payload không có `id`, hành động save sẽ tương ứng với create ) | `(payload: object) => Promise<any>` |
+| `deleteHanlder` | API thực thi việc xóa record                                                                                                                                                                                                        | `(id: any) => Promise<any>`         |
+
+## Result
+
+| Property               | Mô tả                                                                                                                       | Kiểu dữ liệu |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `saveRecordMutation`   | toàn bộ dữ liệu được trả về từ hook [useMutation](https://react-query.tanstack.com/reference/useMutation) của `react-query` | `object`     |
+| `deleteRecordMutation` | toàn bộ dữ liệu được trả về từ hook [useMutation](https://react-query.tanstack.com/reference/useMutation) của `react-query` | `object`     |

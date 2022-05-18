@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="hooks/useCrudNavigate" />
+
+# useCrudNavigate
+
+hooks dùng để điều hướng tới các CRUD page nhanh chóng khi phát triển admin dashboard hoặc CMS
+
+## Quy ước
+
+Format CRUD URLs được sử dụng trong dự án:
+
+| Page | Mô tả        | Chú thích                                                                                       |
+| ---- | ------------ | ----------------------------------------------------------------------------------------------- |
+| List | `/todos`     |                                                                                                 |
+| Edit | `/todos/:id` | thông thường màn details và màn edit sử dụng chung template nên sử dụng format này cho màn edit |
+| New  | `/todos/new` |                                                                                                 |
+
+## API
+
+```js
+const { id, isListPage, isEditPage, isNewPage, toListPage, toEditPage, toNewPage } =
+  useCrudNavigate()
+```
+
+## Result
+
+| Property     | Mô tả                                         | Kiểu dữ liệu        |
+| ------------ | --------------------------------------------- | ------------------- |
+| `id`         | trả về id của record nếu đang ở màn hình edit | `any`               |
+| `isListPage` | trả về `true` nếu đang ở List page            | `boolean`           |
+| `isEditPage` | trả về `true` nếu đang ở Edit page            | `boolean`           |
+| `isNewPage`  | trả về `true` nếu đang ở New page             | `boolean`           |
+| `toListPage` | điều hướng tới List page                      | `() => void`        |
+| `toEditPage` | điều hướng tới Edit page                      | `(id: any) => void` |
+| `toNewPage`  | điều hướng tới New page                       | `() => void`        |
+
+_các methods đã được wrap bởi `useCallback`_

@@ -1,9 +1,8 @@
 import { useCallback, useMemo } from 'react'
 
+import useUrlState from '@ahooksjs/use-url-state'
 import { get, mapValues } from 'lodash'
 import { useQuery } from 'react-query'
-
-import { useUrlState } from './useUrlState'
 
 const PLACEHOLDER_DATA = {
   contents: [],
@@ -13,7 +12,7 @@ const PLACEHOLDER_DATA = {
   pageSize: 10,
 }
 
-export const useRecordList = (name, service) => {
+export const useRecordList = (name, fetcher) => {
   const pageKey = ['page', name].join('__')
   const pageSizeKey = ['pageSize', name].join('__')
 
@@ -36,7 +35,7 @@ export const useRecordList = (name, service) => {
     queryKey: [name, 'list', { page, pageSize }],
     queryFn: async () => {
       try {
-        const listRecordResponse = await service.list({ page, pageSize })
+        const listRecordResponse = await fetcher({ page, pageSize })
         return mapValues(PLACEHOLDER_DATA, (val, key) => get(listRecordResponse, key) || val)
       } catch {
         return PLACEHOLDER_DATA

@@ -1,10 +1,10 @@
 import { notify } from '@templates/SnackBar'
 import { useMutation, useQueryClient } from 'react-query'
 
-export const useRecordMutations = (name, service) => {
+export const useRecordMutations = (name, saveHandler, deleteHanlder) => {
   const queryClient = useQueryClient()
 
-  const saveRecordMutation = useMutation(service.delete, {
+  const saveRecordMutation = useMutation(saveHandler, {
     onSuccess: () => {
       queryClient.invalidateQueries(name)
       notify.success('Thành công!')
@@ -12,7 +12,7 @@ export const useRecordMutations = (name, service) => {
     onError: () => notify.error('Thất bại!'),
   })
 
-  const deleteRecordMutation = useMutation(service.delete, {
+  const deleteRecordMutation = useMutation(deleteHanlder, {
     onSuccess: () => {
       queryClient.invalidateQueries(name)
       notify.success('Thành công!')

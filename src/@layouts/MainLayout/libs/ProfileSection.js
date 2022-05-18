@@ -13,14 +13,14 @@ import {
 } from '@mui/material'
 
 const ProfileSection = () => {
-  const { anchorEl, openPopover, closePopover } = usePopover()
+  const { open, anchorEl, openPopover, closePopover } = usePopover()
 
   return (
     <>
       <Avatar className="cursor-pointer" onClick={openPopover} />
 
       <Popover
-        open={Boolean(anchorEl)}
+        open={open}
         anchorEl={anchorEl}
         onClose={closePopover}
         anchorOrigin={{

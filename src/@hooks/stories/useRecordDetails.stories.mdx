@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="hooks/useRecordDetails" />
+
+# useRecordDetails
+
+Chuẩn hóa việc quản lý server state cho các màn hình Record details (preview/form) bao gồm caching
+
+## Ý tưởng
+
+- Tự động lấy `id` từ URL để thực hiện gọi API
+- Sử dụng `react-query` để caching response từ server và re-fresh sau một thời gian nhất định
+- Dữ liệu sẽ được khởi tạo từ dữ liệu của [useRecordList](/docs/hooks-userecordlist--page) tương ứng
+  trong kho cache (giảm thời gian loading)
+
+## API
+
+```js
+const recordDetailsQuery = useRecordDetails(name, fetcher)
+```
+
+## Params
+
+| Property  | Mô tả                                                                                                                              | Kiểu dữ liệu                |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `name `   | tên resource, sẽ dùng làm cache key, tên này phải trùng với tên đặt cho [useRecordList](/docs/hooks-userecordlist--page) tương ứng | `string`                    |
+| `fetcher` | API thực thi việc tìm nạp dữ liệu từ server                                                                                        | `(id: any) => Promise<any>` |
+
+## Result
+
+| Property             | Mô tả                                                                                                                 | Kiểu dữ liệu |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `recordDetailsQuery` | toàn bộ dữ liệu được trả về từ hook [useQuery](https://react-query.tanstack.com/reference/useQuery) của `react-query` | `object`     |

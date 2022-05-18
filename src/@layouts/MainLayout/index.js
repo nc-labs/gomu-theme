@@ -11,16 +11,17 @@ import Sidebar from './libs/Sidebar'
 const MainLayout = () => {
   const { pathname } = useLocation()
   const upMd = useMediaQuery((theme) => theme.breakpoints.up('md'))
-  const [sidebarOpen, toggleSidebar] = useBoolean(upMd)
+  const [sidebarOpen, { toggle: toggleSidebar, setFalse: closeSidebar, set: setSidebarState }] =
+    useBoolean(upMd)
 
   useEffect(() => {
-    toggleSidebar(upMd)
+    setSidebarState(upMd)
   }, [upMd])
 
   useEffect(() => {
     if (upMd) return
 
-    toggleSidebar(false)
+    closeSidebar()
   }, [pathname])
 
   return (
@@ -48,7 +49,7 @@ const MainLayout = () => {
             variant="temporary"
             anchor="left"
             open={sidebarOpen}
-            onClose={toggleSidebar}
+            onClose={closeSidebar}
             className="md:hidden"
             classes={{
               paper: 'w-[260px] p-2',

@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="hooks/useBoolean" />
+
+# useBoolean
+
+hooks dùng để quản lý boolean state dễ dàng và tiện lợi hơn
+[tham khảo ý tưởng từ ahooks](https://ahooks.js.org/hooks/use-boolean)
+
+## API
+
+```js
+const [state, { toggle, set, setTrue, setFalse }] = useBoolean(defaultState)
+```
+
+## Params
+
+| Property       | Mô tả                     | Kiểu dữ liệu | Giá trị mặc định |
+| -------------- | ------------------------- | ------------ | ---------------- |
+| `defaultState` | giá trị khở tạo cho state | `boolean`    | `false`          |
+
+## Result
+
+| Property  | Mô tả                                  | Kiểu dữ liệu |
+| --------- | -------------------------------------- | ------------ |
+| `state`   | giá trị hiện thời state                | `boolean`    |
+| `actions` | các methods cập nhật giá trị cho state | `Actions`    |
+
+### `Actions`
+
+| Property   | Mô tả                      | Kiểu dữ liệu               |
+| ---------- | -------------------------- | -------------------------- |
+| `toggle`   | đảo ngược giá trị state    | `() => void`               |
+| `setState` | cập nhật giá trị cho state | `(value: boolean) => void` |
+| `setTrue`  | cập nhật giá trị `true`    | `() => void`               |
+| `setFalse` | cập nhật giá trị `false`   | `() => void`               |
+
+_các methods đã được wrap bởi `useCallback`_

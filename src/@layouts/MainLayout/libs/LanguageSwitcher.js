@@ -18,7 +18,7 @@ const languages = [
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation()
-  const { anchorEl, openPopover, closePopover } = usePopover()
+  const { open, anchorEl, openPopover, closePopover } = usePopover()
 
   const currentLanguageId = i18n.language
   const currentLanguage = languages.find((lng) => lng.id === currentLanguageId)
@@ -37,7 +37,7 @@ const LanguageSwitcher = () => {
       </Button>
 
       <Popover
-        open={Boolean(anchorEl)}
+        open={open}
         anchorEl={anchorEl}
         onClose={closePopover}
         anchorOrigin={{

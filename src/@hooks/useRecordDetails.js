@@ -1,14 +1,14 @@
 import { useQuery, useQueryClient } from 'react-query'
 import { useParams } from 'react-router-dom'
 
-export const useRecordDetails = (name, service) => {
+export const useRecordDetails = (name, fetcher) => {
   const { id } = useParams()
 
   const queryClient = useQueryClient()
 
   const recordDetailsQuery = useQuery({
     queryKey: [name, 'details', id],
-    queryFn: () => service.findOne(id),
+    queryFn: () => fetcher(id),
     initialData: () => {
       const queriesData = queryClient.getQueriesData()
 
