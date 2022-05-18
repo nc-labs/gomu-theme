@@ -3,17 +3,25 @@ import navigators from '@configs/navigators'
 import { useBoolean } from '@hooks/useBoolean'
 import { useMediaQuery, Drawer } from '@mui/material'
 import clsx from 'clsx'
+import { Outlet, useLocation } from 'react-router-dom'
 import Footer from './libs/Footer'
 import Header from './libs/Header'
 import Sidebar from './libs/Sidebar'
 
-const MainLayout = memo(({ children }) => {
+const MainLayout = () => {
+  const { pathname } = useLocation()
   const upMd = useMediaQuery((theme) => theme.breakpoints.up('md'))
   const [sidebarOpen, toggleSidebar] = useBoolean(upMd)
 
   useEffect(() => {
     toggleSidebar(upMd)
   }, [upMd])
+
+  useEffect(() => {
+    if (upMd) return
+
+    toggleSidebar(false)
+  }, [pathname])
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -50,7 +58,9 @@ const MainLayout = memo(({ children }) => {
           </Drawer>
         )}
 
-        <div className="flex-1 p-2 overflow-y-auto">{children}</div>
+        <div className="flex-1 p-2 overflow-y-auto">
+          <Outlet />
+        </div>
       </div>
 
       <footer className="flex h-[32px] px-2 items-center justify-end border-t">
@@ -58,5 +68,5 @@ const MainLayout = memo(({ children }) => {
       </footer>
     </div>
   )
-})
-export default MainLayout
+}
+export default memo(MainLayout)
